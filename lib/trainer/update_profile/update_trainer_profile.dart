@@ -31,21 +31,24 @@ class _UpdateTrainerProfileState extends State<UpdateTrainerProfile> {
   String _password = '';
 
   void _getFromCamera() async {
-    XFile? pickedFile = await ImagePicker().pickImage(source: ImageSource.camera);
+    XFile? pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.camera);
     _cropImage(pickedFile!.path);
 
     Navigator.pop(context);
   }
 
   void _getFromGallery() async {
-    XFile? pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    XFile? pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
     _cropImage(pickedFile!.path);
 
     Navigator.pop(context);
   }
 
   void _cropImage(filePath) async {
-    CroppedFile? croppedImage = await ImageCropper().cropImage(sourcePath: filePath, maxHeight: 1080, maxWidth: 1080);
+    CroppedFile? croppedImage = await ImageCropper()
+        .cropImage(sourcePath: filePath, maxHeight: 1080, maxWidth: 1080);
 
     if (croppedImage != null) {
       setState(
@@ -147,8 +150,10 @@ class _UpdateTrainerProfileState extends State<UpdateTrainerProfile> {
 
   void updateProfile() async {
     if (_uploadImage != null) {
-      final ref =
-          FirebaseStorage.instance.ref().child('userImages').child('${FirebaseAuth.instance.currentUser!.uid}.jpg');
+      final ref = FirebaseStorage.instance
+          .ref()
+          .child('userImages')
+          .child('${FirebaseAuth.instance.currentUser!.uid}.jpg');
       await ref.putFile(_uploadImage!);
       userPhotoUrl = await ref.getDownloadURL();
     }
@@ -164,7 +169,8 @@ class _UpdateTrainerProfileState extends State<UpdateTrainerProfile> {
     }
 
     if (_email.isNotEmpty) {
-      await FirebaseAuth.instance.currentUser!.updateEmail(_email.toLowerCase().trim());
+      await FirebaseAuth.instance.currentUser!
+          .updateEmail(_email.toLowerCase().trim());
       data['email'] = _email.toLowerCase().trim();
     }
 
@@ -173,7 +179,10 @@ class _UpdateTrainerProfileState extends State<UpdateTrainerProfile> {
     }
 
     if (data.isNotEmpty) {
-      await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).update(data);
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .update(data);
     }
 
     if (data.keys.length > 1) {
@@ -283,7 +292,8 @@ class _UpdateTrainerProfileState extends State<UpdateTrainerProfile> {
                     child: Padding(
                       padding: const EdgeInsets.all(25.0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start, // Align children to the left
+                        crossAxisAlignment: CrossAxisAlignment
+                            .start, // Align children to the left
                         children: [
                           Center(
                             child: InkWell(
@@ -293,7 +303,9 @@ class _UpdateTrainerProfileState extends State<UpdateTrainerProfile> {
                               child: CircleAvatar(
                                 radius: width * 0.15,
                                 backgroundColor: Colors.grey.shade200,
-                                backgroundImage: _uploadImage == null ? null : FileImage(_uploadImage!),
+                                backgroundImage: _uploadImage == null
+                                    ? null
+                                    : FileImage(_uploadImage!),
                                 child: _uploadImage == null
                                     ? Transform.scale(
                                         scale: 2,
@@ -333,29 +345,29 @@ class _UpdateTrainerProfileState extends State<UpdateTrainerProfile> {
                             ),
                           ),
                           const SizedBox(height: 25),
-                          Padding(
-                            padding: EdgeInsets.only(left: width * 0.01),
-                            child: Text(
-                              'Email',
-                              style: GoogleFonts.merriweather(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 0.035 * width,
-                                // textAlign: TextAlign.left,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          SizedBox(
-                            width: width * 0.8,
-                            child: InputField(
-                              hintText: 'Your Email here',
-                              onChanged: (value) {
-                                _email = value;
-                              },
-                            ),
-                          ),
+                          // Padding(
+                          //   padding: EdgeInsets.only(left: width * 0.01),
+                          //   child: Text(
+                          //     'Email',
+                          //     style: GoogleFonts.merriweather(
+                          //       fontWeight: FontWeight.bold,
+                          //       fontSize: 0.035 * width,
+                          //       // textAlign: TextAlign.left,
+                          //     ),
+                          //   ),
+                          // ),
+                          // const SizedBox(
+                          //   height: 10,
+                          // ),
+                          // SizedBox(
+                          //   width: width * 0.8,
+                          //   child: InputField(
+                          //     hintText: 'Your Email here',
+                          //     onChanged: (value) {
+                          //       _email = value;
+                          //     },
+                          //   ),
+                          // ),
                           const SizedBox(height: 25),
                           Padding(
                             padding: EdgeInsets.only(left: width * 0.01),

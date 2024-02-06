@@ -144,7 +144,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.person),
+            leading: const Icon(Icons.person_add_alt_1),
             title: Text(
               'Create Profile',
               style: GoogleFonts.merriweather(
