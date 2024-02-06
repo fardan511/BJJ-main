@@ -550,7 +550,7 @@ class _TrainerScreenState extends State<TrainerScreen2> {
                                               Row(
                                                 children: [
                                                   Text(
-                                                    data['user_name'],
+                                                    "${data['user_name']}",
                                                     style: GoogleFonts.merriweather(
                                                         fontSize: width * 0.04, fontWeight: FontWeight.bold),
                                                   ),

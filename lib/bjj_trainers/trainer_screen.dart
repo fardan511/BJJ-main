@@ -549,7 +549,7 @@ class _TrainerScreenState extends State<TrainerScreen> {
                                               Row(
                                                 children: [
                                                   Text(
-                                                    data['user_name'],
+                                                    "${data['user_name']}",
                                                     style: GoogleFonts.merriweather(
                                                         fontSize: width * 0.04, fontWeight: FontWeight.bold),
                                                   ),
@@ -579,7 +579,7 @@ class _TrainerScreenState extends State<TrainerScreen> {
                                                     width: 10,
                                                   ),
                                                   Text(
-                                                    data['packages'].first['delivery_time'],
+                                                    "${data['packages'].first['delivery_time']}",
                                                     style: GoogleFonts.merriweather(fontWeight: FontWeight.bold),
                                                   )
                                                 ],
@@ -588,7 +588,7 @@ class _TrainerScreenState extends State<TrainerScreen> {
                                               Row(
                                                 children: [
                                                   Text(
-                                                    data['title'],
+                                                    data['title'] ?? 'No title',
                                                     style: GoogleFonts.merriweather(
                                                         fontSize: width * 0.05, fontWeight: FontWeight.bold),
                                                     textAlign: TextAlign.left,

@@ -92,6 +92,9 @@ class _TrainerCreateServicesState extends State<TrainerCreateServices> {
         "price": _prices[i],
       });
     }
+
+    final doc = await FirebaseFirestore.instance.collection('users').doc(auth.currentUser!.uid).get();
+
     await FirebaseFirestore.instance.collection('services').add({
       "title": _serviceTitleController.text.trim(),
       "category": chosenCategory,
@@ -100,7 +103,7 @@ class _TrainerCreateServicesState extends State<TrainerCreateServices> {
       "description": _descriptionController.text.trim(),
       "packages": packages,
       "user_id": FirebaseAuth.instance.currentUser!.uid,
-      "user_name": FirebaseAuth.instance.currentUser!.displayName,
+      "user_name": doc['userName'] ?? doc['username'] ?? FirebaseAuth.instance.currentUser!.displayName,
     });
 
     ScaffoldMessenger.of(context).showSnackBar(

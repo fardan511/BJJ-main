@@ -131,8 +131,7 @@ class _TrainerGigState extends State<TrainerGig> {
                           child: Padding(
                             padding: EdgeInsets.only(left: width * 0.06),
                             child: const Icon(
-                              Icons
-                                  .luggage_rounded, // Replace with the desired icon
+                              Icons.luggage_rounded, // Replace with the desired icon
                               color: Color.fromARGB(187, 0, 0, 0),
                               size: 50,
                             ),
@@ -144,17 +143,14 @@ class _TrainerGigState extends State<TrainerGig> {
                           children: [
                             Text(
                               "Delivery Time",
-                              style: GoogleFonts.merriweather(
-                                  fontSize: width * 0.04),
+                              style: GoogleFonts.merriweather(fontSize: width * 0.04),
                             ),
                             const SizedBox(
                               height: 6,
                             ),
                             Text(
                               widget.data['packages'].first['delivery_time'],
-                              style: GoogleFonts.merriweather(
-                                  fontSize: width * 0.05,
-                                  fontWeight: FontWeight.bold),
+                              style: GoogleFonts.merriweather(fontSize: width * 0.05, fontWeight: FontWeight.bold),
                               // style: GoogleFonts.merriweather(
                               //   fontSize: width * 0.04,
                               // ),
@@ -188,8 +184,7 @@ class _TrainerGigState extends State<TrainerGig> {
                                 padding: const EdgeInsets.only(left: 8.0),
                                 child: Text(
                                   '''A|あ''',
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.black87, fontSize: 30),
+                                  style: GoogleFonts.poppins(color: Colors.black87, fontSize: 30),
                                 ),
                               ),
                             ),
@@ -201,17 +196,14 @@ class _TrainerGigState extends State<TrainerGig> {
                           children: [
                             Text(
                               "English Level",
-                              style: GoogleFonts.merriweather(
-                                  fontSize: width * 0.04),
+                              style: GoogleFonts.merriweather(fontSize: width * 0.04),
                             ),
                             const SizedBox(
                               height: 6,
                             ),
                             Text(
                               widget.data['level'] ?? 'Fluent',
-                              style: GoogleFonts.merriweather(
-                                  fontSize: width * 0.05,
-                                  fontWeight: FontWeight.bold),
+                              style: GoogleFonts.merriweather(fontSize: width * 0.05, fontWeight: FontWeight.bold),
                               // style: GoogleFonts.merriweather(
                               //   fontSize: width * 0.04,
                               // ),
@@ -256,17 +248,14 @@ class _TrainerGigState extends State<TrainerGig> {
                           children: [
                             Text(
                               "Location",
-                              style: GoogleFonts.merriweather(
-                                  fontSize: width * 0.04),
+                              style: GoogleFonts.merriweather(fontSize: width * 0.04),
                             ),
                             const SizedBox(
                               height: 6,
                             ),
                             Text(
                               widget.data['location'] ?? 'English',
-                              style: GoogleFonts.merriweather(
-                                  fontSize: width * 0.05,
-                                  fontWeight: FontWeight.bold),
+                              style: GoogleFonts.merriweather(fontSize: width * 0.05, fontWeight: FontWeight.bold),
                               // style: GoogleFonts.merriweather(
                               //   fontSize: width * 0.04,
                               // ),
@@ -284,8 +273,7 @@ class _TrainerGigState extends State<TrainerGig> {
                   padding: EdgeInsets.only(left: width * 0.05),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment:
-                        CrossAxisAlignment.start, // Aligns children to the left
+                    crossAxisAlignment: CrossAxisAlignment.start, // Aligns children to the left
                     children: [
                       Text(
                         'Packages',
@@ -320,26 +308,23 @@ class _TrainerGigState extends State<TrainerGig> {
                       TableRow(
                         children: [
                           const TableCell(child: Text('')),
-                          Padding(
-                            padding: EdgeInsets.all(height * 0.01),
-                            child: TableCell(
-                                child: Center(
-                                    child: Text('Package 0',
-                                        style: GoogleFonts.merriweather()))),
+                          TableCell(
+                            child: Padding(
+                              padding: EdgeInsets.all(height * 0.01),
+                              child: Center(child: Text('Package 0', style: GoogleFonts.merriweather())),
+                            ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(height * 0.01),
-                            child: TableCell(
-                                child: Center(
-                                    child: Text('Package 1',
-                                        style: GoogleFonts.merriweather()))),
+                          TableCell(
+                            child: Padding(
+                              padding: EdgeInsets.all(height * 0.01),
+                              child: Center(child: Text('Package 1', style: GoogleFonts.merriweather())),
+                            ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(height * 0.01),
-                            child: TableCell(
-                                child: Center(
-                                    child: Text('Package 2',
-                                        style: GoogleFonts.merriweather()))),
+                          TableCell(
+                            child: Padding(
+                              padding: EdgeInsets.all(height * 0.01),
+                              child: Center(child: Text('Package 2', style: GoogleFonts.merriweather())),
+                            ),
                           ),
                         ],
                       ),
@@ -394,8 +379,7 @@ class _TrainerGigState extends State<TrainerGig> {
                               child: Center(
                             child: Padding(
                               padding: EdgeInsets.only(top: height * 0.01),
-                              child: Text('Description',
-                                  style: GoogleFonts.merriweather()),
+                              child: Text('Description', style: GoogleFonts.merriweather()),
                             ),
                           )),
                           TableCell(
@@ -443,26 +427,20 @@ class _TrainerGigState extends State<TrainerGig> {
                           TableCell(
                               child: Padding(
                             padding: EdgeInsets.only(top: height * 0.02),
-                            child: Text(
-                                widget.data['packages'][0]['delivery_time'],
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.merriweather()),
+                            child: Text(widget.data['packages'][0]['delivery_time'],
+                                textAlign: TextAlign.center, style: GoogleFonts.merriweather()),
                           )),
                           TableCell(
                               child: Padding(
                             padding: EdgeInsets.only(top: height * 0.02),
-                            child: Text(
-                                widget.data['packages'][1]['delivery_time'],
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.merriweather()),
+                            child: Text(widget.data['packages'][1]['delivery_time'],
+                                textAlign: TextAlign.center, style: GoogleFonts.merriweather()),
                           )),
                           TableCell(
                               child: Padding(
                             padding: EdgeInsets.only(top: height * 0.02),
-                            child: Text(
-                                widget.data['packages'][2]['delivery_time'],
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.merriweather()),
+                            child: Text(widget.data['packages'][2]['delivery_time'],
+                                textAlign: TextAlign.center, style: GoogleFonts.merriweather()),
                           )),
                         ],
                       ),
@@ -472,16 +450,14 @@ class _TrainerGigState extends State<TrainerGig> {
                               child: Center(
                             child: Padding(
                               padding: EdgeInsets.only(top: height * 0.01),
-                              child: Text('Revision',
-                                  style: GoogleFonts.merriweather()),
+                              child: Text('Revision', style: GoogleFonts.merriweather()),
                             ),
                           )),
                           TableCell(
                               child: Padding(
                             padding: EdgeInsets.only(top: height * 0.01),
                             child: Text(
-                              widget.data['packages'][0]['revisions']
-                                  .toString(),
+                              widget.data['packages'][0]['revisions'].toString(),
                               style: GoogleFonts.merriweather(),
                               textAlign: TextAlign.center,
                             ),
@@ -490,8 +466,7 @@ class _TrainerGigState extends State<TrainerGig> {
                               child: Padding(
                             padding: EdgeInsets.only(top: height * 0.01),
                             child: Text(
-                              widget.data['packages'][1]['revisions']
-                                  .toString(),
+                              widget.data['packages'][1]['revisions'].toString(),
                               style: GoogleFonts.merriweather(),
                               textAlign: TextAlign.center,
                             ),
@@ -500,8 +475,7 @@ class _TrainerGigState extends State<TrainerGig> {
                               child: Padding(
                             padding: EdgeInsets.only(top: height * 0.01),
                             child: Text(
-                              widget.data['packages'][2]['revisions']
-                                  .toString(),
+                              widget.data['packages'][2]['revisions'].toString(),
                               style: GoogleFonts.merriweather(),
                               textAlign: TextAlign.center,
                             ),
@@ -522,19 +496,16 @@ class _TrainerGigState extends State<TrainerGig> {
                             ),
                           )),
                           TableCell(
-                            child: widget.data['packages'][0]
-                                    ['one_video_review']
+                            child: widget.data['packages'][0]['one_video_review']
                                 ? Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.check_circle,
                                       color: Colors.green,
                                     ),
                                   )
                                 : Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.cancel,
                                       color: Colors.red,
@@ -542,19 +513,16 @@ class _TrainerGigState extends State<TrainerGig> {
                                   ),
                           ),
                           TableCell(
-                            child: widget.data['packages'][1]
-                                    ['one_video_review']
+                            child: widget.data['packages'][1]['one_video_review']
                                 ? Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.check_circle,
                                       color: Colors.green,
                                     ),
                                   )
                                 : Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.cancel,
                                       color: Colors.red,
@@ -562,19 +530,16 @@ class _TrainerGigState extends State<TrainerGig> {
                                   ),
                           ),
                           TableCell(
-                            child: widget.data['packages'][2]
-                                    ['one_video_review']
+                            child: widget.data['packages'][2]['one_video_review']
                                 ? Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.check_circle,
                                       color: Colors.green,
                                     ),
                                   )
                                 : Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.cancel,
                                       color: Colors.red,
@@ -595,19 +560,16 @@ class _TrainerGigState extends State<TrainerGig> {
                             ),
                           )),
                           TableCell(
-                            child: widget.data['packages'][0]
-                                    ['three_video_review']
+                            child: widget.data['packages'][0]['three_video_review']
                                 ? Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.check_circle,
                                       color: Colors.green,
                                     ),
                                   )
                                 : Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.cancel,
                                       color: Colors.red,
@@ -615,19 +577,16 @@ class _TrainerGigState extends State<TrainerGig> {
                                   ),
                           ),
                           TableCell(
-                            child: widget.data['packages'][1]
-                                    ['three_video_review']
+                            child: widget.data['packages'][1]['three_video_review']
                                 ? Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.check_circle,
                                       color: Colors.green,
                                     ),
                                   )
                                 : Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.cancel,
                                       color: Colors.red,
@@ -635,19 +594,16 @@ class _TrainerGigState extends State<TrainerGig> {
                                   ),
                           ),
                           TableCell(
-                            child: widget.data['packages'][2]
-                                    ['three_video_review']
+                            child: widget.data['packages'][2]['three_video_review']
                                 ? Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.check_circle,
                                       color: Colors.green,
                                     ),
                                   )
                                 : Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.cancel,
                                       color: Colors.red,
@@ -668,19 +624,16 @@ class _TrainerGigState extends State<TrainerGig> {
                             ),
                           )),
                           TableCell(
-                            child: widget.data['packages'][0]
-                                    ['five_video_review']
+                            child: widget.data['packages'][0]['five_video_review']
                                 ? Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.check_circle,
                                       color: Colors.green,
                                     ),
                                   )
                                 : Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.cancel,
                                       color: Colors.red,
@@ -688,19 +641,16 @@ class _TrainerGigState extends State<TrainerGig> {
                                   ),
                           ),
                           TableCell(
-                            child: widget.data['packages'][1]
-                                    ['five_video_review']
+                            child: widget.data['packages'][1]['five_video_review']
                                 ? Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.check_circle,
                                       color: Colors.green,
                                     ),
                                   )
                                 : Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.cancel,
                                       color: Colors.red,
@@ -708,19 +658,16 @@ class _TrainerGigState extends State<TrainerGig> {
                                   ),
                           ),
                           TableCell(
-                            child: widget.data['packages'][2]
-                                    ['five_video_review']
+                            child: widget.data['packages'][2]['five_video_review']
                                 ? Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.check_circle,
                                       color: Colors.green,
                                     ),
                                   )
                                 : Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.02),
+                                    padding: EdgeInsets.only(top: height * 0.02),
                                     child: const Icon(
                                       Icons.cancel,
                                       color: Colors.red,
@@ -735,8 +682,7 @@ class _TrainerGigState extends State<TrainerGig> {
                               child: Padding(
                             padding: EdgeInsets.only(top: height * 0.01),
                             child: Center(
-                              child: Text('Price',
-                                  style: GoogleFonts.merriweather()),
+                              child: Text('Price', style: GoogleFonts.merriweather()),
                             ),
                           )),
                           TableCell(
@@ -830,8 +776,7 @@ class _TrainerGigState extends State<TrainerGig> {
                   padding: EdgeInsets.only(left: width * 0.05),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment:
-                        CrossAxisAlignment.start, // Aligns children to the left
+                    crossAxisAlignment: CrossAxisAlignment.start, // Aligns children to the left
                     children: [
                       Text(
                         'FAQs',
@@ -854,8 +799,7 @@ class _TrainerGigState extends State<TrainerGig> {
                 Container(
                   width: width * 0.95,
                   decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(10.0), // Set the border radius
+                    borderRadius: BorderRadius.circular(10.0), // Set the border radius
                     color: const Color.fromARGB(82, 255, 235, 238),
                   ),
                   child: Column(
@@ -894,8 +838,7 @@ class _TrainerGigState extends State<TrainerGig> {
                                 '1 Video\nReview',
                                 style: GoogleFonts.merriweather(
                                     fontSize: 0.028 * width,
-                                    color:
-                                        const Color.fromARGB(255, 202, 40, 28),
+                                    color: const Color.fromARGB(255, 202, 40, 28),
                                     fontWeight: FontWeight.w600),
                               ),
                             ),
@@ -927,8 +870,7 @@ class _TrainerGigState extends State<TrainerGig> {
                                 '2 Video\nReview',
                                 style: GoogleFonts.merriweather(
                                     fontSize: 0.028 * width,
-                                    color:
-                                        const Color.fromARGB(255, 202, 40, 28),
+                                    color: const Color.fromARGB(255, 202, 40, 28),
                                     fontWeight: FontWeight.w600),
                               ),
                             ),
@@ -960,8 +902,7 @@ class _TrainerGigState extends State<TrainerGig> {
                                 '3 Video\nReview',
                                 style: GoogleFonts.merriweather(
                                     fontSize: 0.028 * width,
-                                    color:
-                                        const Color.fromARGB(255, 202, 40, 28),
+                                    color: const Color.fromARGB(255, 202, 40, 28),
                                     fontWeight: FontWeight.w600),
                               ),
                             ),
@@ -975,8 +916,7 @@ class _TrainerGigState extends State<TrainerGig> {
                               padding: EdgeInsets.only(left: width * 0.15),
                               child: TextField(
                                 decoration: InputDecoration(
-                                  labelText:
-                                      '\$${widget.data['packages'][0]['price']}.00',
+                                  labelText: '\$${widget.data['packages'][0]['price']}.00',
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   labelStyle: GoogleFonts.merriweather(
@@ -992,8 +932,7 @@ class _TrainerGigState extends State<TrainerGig> {
                               padding: EdgeInsets.only(left: width * 0.20),
                               child: TextField(
                                 decoration: InputDecoration(
-                                  labelText: widget.data['packages'][0]
-                                      ['description'],
+                                  labelText: widget.data['packages'][0]['description'],
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   labelStyle: GoogleFonts.merriweather(
@@ -1008,8 +947,7 @@ class _TrainerGigState extends State<TrainerGig> {
                               padding: EdgeInsets.only(left: width * 0.17),
                               child: TextField(
                                 decoration: InputDecoration(
-                                  labelText:
-                                      '${widget.data['packages'][0]['delivery_time']}',
+                                  labelText: '${widget.data['packages'][0]['delivery_time']}',
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   prefixIcon: const Icon(Icons.access_time),
@@ -1028,8 +966,7 @@ class _TrainerGigState extends State<TrainerGig> {
                                   labelText: '1 Video Review',
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
-                                  prefixIcon: widget.data['packages'][0]
-                                          ['one_video_review']
+                                  prefixIcon: widget.data['packages'][0]['one_video_review']
                                       ? Padding(
                                           padding: EdgeInsets.only(
                                             top: height * 0.025,
@@ -1040,8 +977,7 @@ class _TrainerGigState extends State<TrainerGig> {
                                           ),
                                         )
                                       : Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.close,
                                             color: Colors.red,
@@ -1062,19 +998,16 @@ class _TrainerGigState extends State<TrainerGig> {
                                   labelText: '3 Video Review',
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
-                                  prefixIcon: widget.data['packages'][0]
-                                          ['three_video_review']
+                                  prefixIcon: widget.data['packages'][0]['three_video_review']
                                       ? Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.check,
                                             color: Colors.green,
                                           ),
                                         )
                                       : Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.close,
                                             color: Colors.red,
@@ -1095,19 +1028,16 @@ class _TrainerGigState extends State<TrainerGig> {
                                   labelText: '5 Video Review',
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
-                                  prefixIcon: widget.data['packages'][0]
-                                          ['five_video_review']
+                                  prefixIcon: widget.data['packages'][0]['five_video_review']
                                       ? Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.check,
                                             color: Colors.green,
                                           ),
                                         )
                                       : Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.close,
                                             color: Colors.red,
@@ -1176,8 +1106,7 @@ class _TrainerGigState extends State<TrainerGig> {
                               padding: EdgeInsets.only(left: width * 0.15),
                               child: TextField(
                                 decoration: InputDecoration(
-                                  labelText:
-                                      '\$${widget.data['packages'][1]['price']}.00',
+                                  labelText: '\$${widget.data['packages'][1]['price']}.00',
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   labelStyle: GoogleFonts.merriweather(
@@ -1193,8 +1122,7 @@ class _TrainerGigState extends State<TrainerGig> {
                               padding: EdgeInsets.only(left: width * 0.20),
                               child: TextField(
                                 decoration: InputDecoration(
-                                  labelText: widget.data['packages'][1]
-                                      ['description'],
+                                  labelText: widget.data['packages'][1]['description'],
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   labelStyle: GoogleFonts.merriweather(
@@ -1209,13 +1137,11 @@ class _TrainerGigState extends State<TrainerGig> {
                               padding: EdgeInsets.only(left: width * 0.17),
                               child: TextField(
                                 decoration: InputDecoration(
-                                  labelText:
-                                      '${widget.data['packages'][1]['delivery_time']}',
+                                  labelText: '${widget.data['packages'][1]['delivery_time']}',
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   prefixIcon: Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.025),
+                                    padding: EdgeInsets.only(top: height * 0.025),
                                     child: Icon(Icons.access_time),
                                   ),
                                   labelStyle: GoogleFonts.merriweather(
@@ -1233,19 +1159,16 @@ class _TrainerGigState extends State<TrainerGig> {
                                   labelText: '1 Video Review',
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
-                                  prefixIcon: widget.data['packages'][1]
-                                          ['one_video_review']
+                                  prefixIcon: widget.data['packages'][1]['one_video_review']
                                       ? Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.check,
                                             color: Colors.green,
                                           ),
                                         )
                                       : Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.close,
                                             color: Colors.red,
@@ -1266,19 +1189,16 @@ class _TrainerGigState extends State<TrainerGig> {
                                   labelText: '3 Video Review',
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
-                                  prefixIcon: widget.data['packages'][1]
-                                          ['three_video_review']
+                                  prefixIcon: widget.data['packages'][1]['three_video_review']
                                       ? Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.check,
                                             color: Colors.green,
                                           ),
                                         )
                                       : Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.close,
                                             color: Colors.red,
@@ -1299,19 +1219,16 @@ class _TrainerGigState extends State<TrainerGig> {
                                   labelText: '5 Video Review',
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
-                                  prefixIcon: widget.data['packages'][1]
-                                          ['five_video_review']
+                                  prefixIcon: widget.data['packages'][1]['five_video_review']
                                       ? Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.check,
                                             color: Colors.green,
                                           ),
                                         )
                                       : Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.close,
                                             color: Colors.red,
@@ -1380,8 +1297,7 @@ class _TrainerGigState extends State<TrainerGig> {
                               padding: EdgeInsets.only(left: width * 0.15),
                               child: TextField(
                                 decoration: InputDecoration(
-                                  labelText:
-                                      '\$${widget.data['packages'][2]['price']}.00',
+                                  labelText: '\$${widget.data['packages'][2]['price']}.00',
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   labelStyle: GoogleFonts.merriweather(
@@ -1397,8 +1313,7 @@ class _TrainerGigState extends State<TrainerGig> {
                               padding: EdgeInsets.only(left: width * 0.20),
                               child: TextField(
                                 decoration: InputDecoration(
-                                  labelText: widget.data['packages'][2]
-                                      ['description'],
+                                  labelText: widget.data['packages'][2]['description'],
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   labelStyle: GoogleFonts.merriweather(
@@ -1413,13 +1328,11 @@ class _TrainerGigState extends State<TrainerGig> {
                               padding: EdgeInsets.only(left: width * 0.17),
                               child: TextField(
                                 decoration: InputDecoration(
-                                  labelText:
-                                      '${widget.data['packages'][2]['delivery_time']}',
+                                  labelText: '${widget.data['packages'][2]['delivery_time']}',
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   prefixIcon: Padding(
-                                    padding:
-                                        EdgeInsets.only(top: height * 0.025),
+                                    padding: EdgeInsets.only(top: height * 0.025),
                                     child: const Icon(Icons.access_time),
                                   ),
                                   labelStyle: GoogleFonts.merriweather(
@@ -1437,19 +1350,16 @@ class _TrainerGigState extends State<TrainerGig> {
                                   labelText: '1 Video Review',
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
-                                  prefixIcon: widget.data['packages'][2]
-                                          ['one_video_review']
+                                  prefixIcon: widget.data['packages'][2]['one_video_review']
                                       ? Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.check,
                                             color: Colors.green,
                                           ),
                                         )
                                       : Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.close,
                                             color: Colors.red,
@@ -1470,19 +1380,16 @@ class _TrainerGigState extends State<TrainerGig> {
                                   labelText: '3 Video Review',
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
-                                  prefixIcon: widget.data['packages'][2]
-                                          ['three_video_review']
+                                  prefixIcon: widget.data['packages'][2]['three_video_review']
                                       ? Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.check,
                                             color: Colors.green,
                                           ),
                                         )
                                       : Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.close,
                                             color: Colors.red,
@@ -1503,19 +1410,16 @@ class _TrainerGigState extends State<TrainerGig> {
                                   labelText: '5 Video Review',
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,
-                                  prefixIcon: widget.data['packages'][2]
-                                          ['five_video_review']
+                                  prefixIcon: widget.data['packages'][2]['five_video_review']
                                       ? Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.check,
                                             color: Colors.green,
                                           ),
                                         )
                                       : Padding(
-                                          padding: EdgeInsets.only(
-                                              top: height * 0.025),
+                                          padding: EdgeInsets.only(top: height * 0.025),
                                           child: const Icon(
                                             Icons.close,
                                             color: Colors.red,
@@ -1587,8 +1491,7 @@ class _TrainerGigState extends State<TrainerGig> {
                 Container(
                   width: width * 0.9,
                   decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(10.0), // Set the border radius
+                    borderRadius: BorderRadius.circular(10.0), // Set the border radius
                     color: const Color.fromARGB(82, 255, 235, 238),
                   ),
                   child: Padding(

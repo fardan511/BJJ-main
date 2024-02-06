@@ -54,22 +54,38 @@ class _MyTableState extends State<MyTable> {
           TableRow(
             children: [
               TableCell(child: Text('')),
-              TableCell(child: Center(child: Text('Package 0', style: GoogleFonts.merriweather()))),
-              TableCell(child: Center(child: Text('Package 1', style: GoogleFonts.merriweather()))),
-              TableCell(child: Center(child: Text('Package 2', style: GoogleFonts.merriweather()))),
+              Padding(
+                padding: EdgeInsets.all(height * 0.01),
+                child: TableCell(child: Center(child: Text('Package 0', style: GoogleFonts.merriweather()))),
+              ),
+              Padding(
+                padding: EdgeInsets.all(height * 0.01),
+                child: TableCell(child: Center(child: Text('Package 1', style: GoogleFonts.merriweather()))),
+              ),
+              Padding(
+                padding: EdgeInsets.all(height * 0.01),
+                child: TableCell(child: Center(child: Text('Package 2', style: GoogleFonts.merriweather()))),
+              ),
             ],
           ),
           TableRow(
             children: [
               TableCell(
-                child: Center(
-                  child: Text('Name', style: GoogleFonts.merriweather()),
-                ),
-              ),
-              TableCell(
-                child: TextFormField(
-                  style: GoogleFonts.merriweather(),
-                  controller: widget.names[0],
+                  child: Center(
+                      child: Padding(
+                padding: EdgeInsets.only(top: height * 0.01),
+                child: Text('Name', style: GoogleFonts.merriweather()),
+              ))),
+              Padding(
+                padding: EdgeInsets.only(left: width * 0.01),
+                child: TableCell(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: width * 0.015),
+                    child: TextFormField(
+                      style: GoogleFonts.merriweather(),
+                      controller: widget.names[0],
+                    ),
+                  ),
                 ),
               ),
               TableCell(
@@ -122,71 +138,80 @@ class _MyTableState extends State<MyTable> {
                 padding: EdgeInsets.only(top: height * 0.01),
                 child: Text('Delivery Time', style: GoogleFonts.merriweather()),
               ))),
-              TableCell(
-                child: DropdownButton<String>(
-                  value: widget.deliveryTimes[0].isNotEmpty ? widget.deliveryTimes[0] : null,
-                  items: [
-                    '1-2 Weeks',
-                    '1-3 Days',
-                    '3-5 Days',
-                  ].map((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(
-                        value,
-                        style: GoogleFonts.merriweather(
-                          fontSize: 14,
+              Padding(
+                padding: EdgeInsets.only(left: width * 0.05),
+                child: TableCell(
+                  child: DropdownButton<String>(
+                    value: widget.deliveryTimes[0].isNotEmpty ? widget.deliveryTimes[0] : null,
+                    items: [
+                      '1-2 Weeks',
+                      '1-3 Days',
+                      '3-5 Days',
+                    ].map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(
+                          value,
+                          style: GoogleFonts.merriweather(
+                            fontSize: 14,
+                          ),
                         ),
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      widget.deliveryTimes[0] = newValue!;
-                    });
-                  },
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        widget.deliveryTimes[0] = newValue!;
+                      });
+                    },
+                  ),
                 ),
               ),
-              TableCell(
-                child: DropdownButton<String>(
-                  value: widget.deliveryTimes[1].isNotEmpty ? widget.deliveryTimes[1] : null,
-                  items: ['1-2 Weeks', '1-3 Days', '3-5 Days'].map((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(
-                        value,
-                        style: GoogleFonts.merriweather(
-                          fontSize: 14,
+              Padding(
+                padding: EdgeInsets.only(left: width * 0.05),
+                child: TableCell(
+                  child: DropdownButton<String>(
+                    value: widget.deliveryTimes[1].isNotEmpty ? widget.deliveryTimes[1] : null,
+                    items: ['1-2 Weeks', '1-3 Days', '3-5 Days'].map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(
+                          value,
+                          style: GoogleFonts.merriweather(
+                            fontSize: 14,
+                          ),
                         ),
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      widget.deliveryTimes[1] = newValue!;
-                    });
-                  },
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        widget.deliveryTimes[1] = newValue!;
+                      });
+                    },
+                  ),
                 ),
               ),
-              TableCell(
-                child: DropdownButton<String>(
-                  value: widget.deliveryTimes[2].isNotEmpty ? widget.deliveryTimes[2] : null,
-                  items: ['1-2 Weeks', '1-3 Days', '3-5 Days'].map((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(
-                        value,
-                        style: GoogleFonts.merriweather(
-                          fontSize: 14,
+              Padding(
+                padding: EdgeInsets.only(left: width * 0.05),
+                child: TableCell(
+                  child: DropdownButton<String>(
+                    value: widget.deliveryTimes[2].isNotEmpty ? widget.deliveryTimes[2] : null,
+                    items: ['1-2 Weeks', '1-3 Days', '3-5 Days'].map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(
+                          value,
+                          style: GoogleFonts.merriweather(
+                            fontSize: 14,
+                          ),
                         ),
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      widget.deliveryTimes[2] = newValue!;
-                    });
-                  },
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        widget.deliveryTimes[2] = newValue!;
+                      });
+                    },
+                  ),
                 ),
               ),
             ],
