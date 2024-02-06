@@ -1,6 +1,7 @@
 import 'package:bjj/chat/chatterScreen.dart';
 import 'package:bjj/models/trainer_model.dart';
 import 'package:bjj/student/student_drawer/student_drawer.dart';
+import 'package:bjj/trainer/trainer_drawer/trainer_drawer.dart';
 import 'package:bjj/trainer/trainer_gig/trainer_gig.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -11,15 +12,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../core/literals.dart';
 import 'trainer_projects_screen.dart';
 
-class TrainerScreen extends StatefulWidget {
+class TrainerScreen2 extends StatefulWidget {
   final TrainerModel trainer;
-  const TrainerScreen({super.key, required this.trainer});
+  const TrainerScreen2({super.key, required this.trainer});
 
   @override
-  State<TrainerScreen> createState() => _TrainerScreenState();
+  State<TrainerScreen2> createState() => _TrainerScreenState();
 }
 
-class _TrainerScreenState extends State<TrainerScreen> {
+class _TrainerScreenState extends State<TrainerScreen2> {
   bool showTextField1 = false;
   bool showTextField2 = false;
   bool showTextField3 = false;
@@ -69,7 +70,7 @@ class _TrainerScreenState extends State<TrainerScreen> {
         iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       ),
-      drawer: const StudentAppDrawer(),
+      drawer: const AppDrawer(),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.grey.shade100,

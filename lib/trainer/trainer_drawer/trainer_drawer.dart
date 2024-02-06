@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously, unused_import
 
 import 'package:bjj/login/login_page.dart';
+import 'package:bjj/models/trainer_model.dart';
 import 'package:bjj/trainer/active_gigs/active_gigs.dart';
 import 'package:bjj/trainer/trainer_dashboard.dart';
 import 'package:bjj/trainer/trainer_services/cancelled_services.dart';
@@ -26,6 +27,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../bjj_trainers/trainer_screen.dart';
+import '../../bjj_trainers/trainer_screen_2.dart';
+
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
 
@@ -45,10 +49,7 @@ class AppDrawer extends StatelessWidget {
                 color: Colors.black,
               ),
               child: StreamBuilder(
-                stream: FirebaseFirestore.instance
-                    .collection('users')
-                    .doc(auth.currentUser!.uid)
-                    .snapshots(),
+                stream: FirebaseFirestore.instance.collection('users').doc(auth.currentUser!.uid).snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return const SizedBox();
@@ -63,8 +64,7 @@ class AppDrawer extends StatelessWidget {
                           borderRadius: BorderRadius.circular(
                             10.0,
                           ),
-                          child: snapshot.data!['userImage'] != null &&
-                                  snapshot.data!['userImage'].isNotEmpty
+                          child: snapshot.data!['userImage'] != null && snapshot.data!['userImage'].isNotEmpty
                               ? Image(
                                   image: NetworkImage(
                                     snapshot.data!['userImage'],
@@ -113,7 +113,7 @@ class AppDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const TrainerHomescreen(),
@@ -157,6 +157,33 @@ class AppDrawer extends StatelessWidget {
               );
             },
           ),
+          FutureBuilder(
+              future: FirebaseFirestore.instance.collection('users').doc(auth.currentUser!.uid).get(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return const SizedBox();
+                }
+                return ListTile(
+                  leading: const Icon(Icons.person),
+                  title: Text(
+                    'My Profile',
+                    style: GoogleFonts.merriweather(
+                      fontSize: width * 0.035,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TrainerScreen2(
+                          trainer: TrainerModel.fromJson(snapshot.data!.data()!),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              }),
           ListTile(
             leading: const Icon(Icons.create_rounded),
             title: Text(

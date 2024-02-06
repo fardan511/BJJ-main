@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 import 'package:bjj/dialogBox/error_dialog.dart';
 import 'package:bjj/student/input_fields.dart';
@@ -29,24 +31,21 @@ class _UpdateTrainerProfileState extends State<UpdateTrainerProfile> {
   String _password = '';
 
   void _getFromCamera() async {
-    XFile? pickedFile =
-        await ImagePicker().pickImage(source: ImageSource.camera);
+    XFile? pickedFile = await ImagePicker().pickImage(source: ImageSource.camera);
     _cropImage(pickedFile!.path);
 
     Navigator.pop(context);
   }
 
   void _getFromGallery() async {
-    XFile? pickedFile =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
+    XFile? pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
     _cropImage(pickedFile!.path);
 
     Navigator.pop(context);
   }
 
   void _cropImage(filePath) async {
-    CroppedFile? croppedImage = await ImageCropper()
-        .cropImage(sourcePath: filePath, maxHeight: 1080, maxWidth: 1080);
+    CroppedFile? croppedImage = await ImageCropper().cropImage(sourcePath: filePath, maxHeight: 1080, maxWidth: 1080);
 
     if (croppedImage != null) {
       setState(
@@ -148,10 +147,8 @@ class _UpdateTrainerProfileState extends State<UpdateTrainerProfile> {
 
   void updateProfile() async {
     if (_uploadImage != null) {
-      final ref = FirebaseStorage.instance
-          .ref()
-          .child('userImages')
-          .child('${FirebaseAuth.instance.currentUser!.uid}.jpg');
+      final ref =
+          FirebaseStorage.instance.ref().child('userImages').child('${FirebaseAuth.instance.currentUser!.uid}.jpg');
       await ref.putFile(_uploadImage!);
       userPhotoUrl = await ref.getDownloadURL();
     }
@@ -167,8 +164,7 @@ class _UpdateTrainerProfileState extends State<UpdateTrainerProfile> {
     }
 
     if (_email.isNotEmpty) {
-      await FirebaseAuth.instance.currentUser!
-          .updateEmail(_email.toLowerCase().trim());
+      await FirebaseAuth.instance.currentUser!.updateEmail(_email.toLowerCase().trim());
       data['email'] = _email.toLowerCase().trim();
     }
 
@@ -177,10 +173,61 @@ class _UpdateTrainerProfileState extends State<UpdateTrainerProfile> {
     }
 
     if (data.isNotEmpty) {
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(FirebaseAuth.instance.currentUser!.uid)
-          .update(data);
+      await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).update(data);
+    }
+
+    if (data.keys.length > 1) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.green,
+          content: Text(
+            'Password updated succesfully',
+            style: GoogleFonts.merriweather(color: Colors.white),
+          ),
+        ),
+      );
+    } else {
+      if (userPhotoUrl.isNotEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.green,
+            content: Text(
+              'Your profile picture has been updated succesfully',
+              style: GoogleFonts.merriweather(color: Colors.white),
+            ),
+          ),
+        );
+      } else if (_name.isNotEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.green,
+            content: Text(
+              'Your name has been updated succesfully',
+              style: GoogleFonts.merriweather(color: Colors.white),
+            ),
+          ),
+        );
+      } else if (_email.isNotEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.green,
+            content: Text(
+              'Your email has been updated succesfully',
+              style: GoogleFonts.merriweather(color: Colors.white),
+            ),
+          ),
+        );
+      } else if (_password.isNotEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.green,
+            content: Text(
+              'Your password has been updated succesfully',
+              style: GoogleFonts.merriweather(color: Colors.white),
+            ),
+          ),
+        );
+      }
     }
   }
 
@@ -236,8 +283,7 @@ class _UpdateTrainerProfileState extends State<UpdateTrainerProfile> {
                     child: Padding(
                       padding: const EdgeInsets.all(25.0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment
-                            .start, // Align children to the left
+                        crossAxisAlignment: CrossAxisAlignment.start, // Align children to the left
                         children: [
                           Center(
                             child: InkWell(
@@ -247,9 +293,7 @@ class _UpdateTrainerProfileState extends State<UpdateTrainerProfile> {
                               child: CircleAvatar(
                                 radius: width * 0.15,
                                 backgroundColor: Colors.grey.shade200,
-                                backgroundImage: _uploadImage == null
-                                    ? null
-                                    : FileImage(_uploadImage!),
+                                backgroundImage: _uploadImage == null ? null : FileImage(_uploadImage!),
                                 child: _uploadImage == null
                                     ? Transform.scale(
                                         scale: 2,

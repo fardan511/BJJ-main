@@ -70,68 +70,65 @@ class _TrainerEditProfileState extends State<TrainerEditProfile> {
     Map<String, String> profileData = {};
 
     if (_usernameController.text.trim().isNotEmpty) {
-      profileData
-          .addEntries({"username": _usernameController.text.trim()}.entries);
+      profileData.addEntries({"username": _usernameController.text.trim()}.entries);
     }
     if (_profileNameController.text.trim().isNotEmpty) {
-      profileData.addEntries(
-          {"profileName": _profileNameController.text.trim()}.entries);
+      profileData.addEntries({"profileName": _profileNameController.text.trim()}.entries);
     }
     if (_profileTitleController.text.trim().isNotEmpty) {
-      profileData.addEntries(
-          {"profileTitle": _profileTitleController.text.trim()}.entries);
+      profileData.addEntries({"profileTitle": _profileTitleController.text.trim()}.entries);
     }
     if (_hourlyRateController.text.trim().isNotEmpty) {
-      profileData.addEntries(
-          {"hourlyRate": _hourlyRateController.text.trim()}.entries);
+      profileData.addEntries({"hourlyRate": _hourlyRateController.text.trim()}.entries);
     }
     if (_bioController.text.trim().isNotEmpty) {
-      profileData
-          .addEntries({"bioDescription": _bioController.text.trim()}.entries);
+      profileData.addEntries({"bioDescription": _bioController.text.trim()}.entries);
     }
     if (_livingController.text.trim().isNotEmpty) {
-      profileData
-          .addEntries({"livingTown": _livingController.text.trim()}.entries);
+      profileData.addEntries({"livingTown": _livingController.text.trim()}.entries);
     }
     if (_facebookController.text.trim().isNotEmpty) {
-      profileData.addEntries({
-        "facebookURL": _facebookController.text.trim().toLowerCase()
-      }.entries);
+      profileData.addEntries({"facebookURL": _facebookController.text.trim().toLowerCase()}.entries);
     }
     if (_instagramController.text.trim().isNotEmpty) {
-      profileData.addEntries({
-        "instagramURL": _instagramController.text.trim().toLowerCase()
-      }.entries);
+      profileData.addEntries({"instagramURL": _instagramController.text.trim().toLowerCase()}.entries);
     }
     if (_twitterController.text.trim().isNotEmpty) {
-      profileData.addEntries(
-          {"twitterURL": _twitterController.text.trim().toLowerCase()}.entries);
+      profileData.addEntries({"twitterURL": _twitterController.text.trim().toLowerCase()}.entries);
     }
     if (_linkedinController.text.trim().isNotEmpty) {
-      profileData.addEntries({
-        "linkedinURL": _linkedinController.text.trim().toLowerCase()
-      }.entries);
+      profileData.addEntries({"linkedinURL": _linkedinController.text.trim().toLowerCase()}.entries);
     }
     if (_otherLinkController.text.trim().isNotEmpty) {
-      profileData.addEntries({
-        "otherLinkURL": _otherLinkController.text.trim().toLowerCase()
-      }.entries);
+      profileData.addEntries({"otherLinkURL": _otherLinkController.text.trim().toLowerCase()}.entries);
     }
-    if (chosenGender != null)
+    if (chosenGender != null) {
       profileData.addEntries({"gender": chosenGender!}.entries);
-    if (chosenLevel != null)
+    }
+    if (chosenLevel != null) {
       profileData.addEntries({"level": chosenLevel!}.entries);
-    if (chosenLocation != null)
+    }
+    if (chosenLocation != null) {
       profileData.addEntries({"location": chosenLocation!}.entries);
-    if (chosenNoOfYears != null)
+    }
+    if (chosenNoOfYears != null) {
       profileData.addEntries({"noOfYears": chosenNoOfYears!}.entries);
-
-    print(FirebaseAuth.instance.currentUser!.uid);
+    }
 
     await FirebaseFirestore.instance
         .collection('users')
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .update(profileData);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.green,
+        content: Text(
+          'Your profile has been updated!',
+          style: GoogleFonts.merriweather(color: Colors.white),
+        ),
+      ),
+    );
   }
 
   void updatePassword() async {
@@ -155,11 +152,10 @@ class _TrainerEditProfileState extends State<TrainerEditProfile> {
         return;
       }
 
-      await user.reauthenticateWithCredential(EmailAuthProvider.credential(
-          email: user.email!, password: _currentPasswordController.text));
+      await user.reauthenticateWithCredential(
+          EmailAuthProvider.credential(email: user.email!, password: _currentPasswordController.text));
 
-      await FirebaseAuth.instance.currentUser!
-          .updatePassword(_newPasswordController.text);
+      await FirebaseAuth.instance.currentUser!.updatePassword(_newPasswordController.text);
 
       _currentPasswordController.clear();
       _newPasswordController.clear();
@@ -240,10 +236,7 @@ class _TrainerEditProfileState extends State<TrainerEditProfile> {
                       child: Padding(
                         padding: const EdgeInsets.all(25.0),
                         child: StreamBuilder(
-                          stream: FirebaseFirestore.instance
-                              .collection('users')
-                              .doc(auth.currentUser!.uid)
-                              .snapshots(),
+                          stream: FirebaseFirestore.instance.collection('users').doc(auth.currentUser!.uid).snapshots(),
                           builder: (context, snapshot) {
                             if (!snapshot.hasData) {
                               return const SizedBox();
@@ -284,22 +277,19 @@ class _TrainerEditProfileState extends State<TrainerEditProfile> {
                                     borderRadius: BorderRadius.circular(
                                       30.0,
                                     ),
-                                    child:
-                                        snapshot.data!['userImage'] != null &&
-                                                snapshot.data!['userImage']
-                                                    .isNotEmpty
-                                            ? Image(
-                                                image: NetworkImage(
-                                                  snapshot.data!['userImage'],
-                                                ),
-                                                fit: BoxFit.cover,
-                                              )
-                                            : const Image(
-                                                image: AssetImage(
-                                                  'images/admin.png',
-                                                ),
-                                                height: 100,
-                                              ),
+                                    child: snapshot.data!['userImage'] != null && snapshot.data!['userImage'].isNotEmpty
+                                        ? Image(
+                                            image: NetworkImage(
+                                              snapshot.data!['userImage'],
+                                            ),
+                                            fit: BoxFit.cover,
+                                          )
+                                        : const Image(
+                                            image: AssetImage(
+                                              'images/admin.png',
+                                            ),
+                                            height: 100,
+                                          ),
                                   ),
                                 ),
                                 const SizedBox(height: 8),
@@ -383,8 +373,7 @@ class _TrainerEditProfileState extends State<TrainerEditProfile> {
                 child: Center(
                   child: Text(
                     'My Coach Coaches',
-                    style: GoogleFonts.merriweather(
-                        fontWeight: FontWeight.bold, fontSize: width * 0.045),
+                    style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.045),
                   ),
                 ),
               ),
@@ -464,18 +453,15 @@ class _TrainerEditProfileState extends State<TrainerEditProfile> {
                               blurRadius: 10,
                               spreadRadius: 1,
                               offset: const Offset(1, 1),
-                              color: const Color.fromARGB(47, 192, 192, 192)
-                                  .withOpacity(0.4),
+                              color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                             ),
                           ],
                         ),
                         child: DropdownButtonFormField<String>(
                           decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(30, 25, 0, 16),
+                            contentPadding: const EdgeInsets.fromLTRB(30, 25, 0, 16),
                             hintText: "Select Gender",
-                            hintStyle: GoogleFonts.merriweather(
-                                fontSize: 0.028 * width),
+                            hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: const BorderSide(
@@ -535,18 +521,15 @@ class _TrainerEditProfileState extends State<TrainerEditProfile> {
                               blurRadius: 10,
                               spreadRadius: 1,
                               offset: const Offset(1, 1),
-                              color: const Color.fromARGB(47, 192, 192, 192)
-                                  .withOpacity(0.4),
+                              color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                             ),
                           ],
                         ),
                         child: DropdownButtonFormField<String>(
                           decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(30, 25, 0, 16),
+                            contentPadding: const EdgeInsets.fromLTRB(30, 25, 0, 16),
                             hintText: "Level",
-                            hintStyle: GoogleFonts.merriweather(
-                                fontSize: 0.028 * width),
+                            hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: const BorderSide(
@@ -606,18 +589,15 @@ class _TrainerEditProfileState extends State<TrainerEditProfile> {
                               blurRadius: 10,
                               spreadRadius: 1,
                               offset: const Offset(1, 1),
-                              color: const Color.fromARGB(47, 192, 192, 192)
-                                  .withOpacity(0.4),
+                              color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                             ),
                           ],
                         ),
                         child: DropdownButtonFormField<String>(
                           decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(30, 25, 0, 16),
+                            contentPadding: const EdgeInsets.fromLTRB(30, 25, 0, 16),
                             hintText: "No of Years",
-                            hintStyle: GoogleFonts.merriweather(
-                                fontSize: 0.028 * width),
+                            hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: const BorderSide(
@@ -677,18 +657,15 @@ class _TrainerEditProfileState extends State<TrainerEditProfile> {
                               blurRadius: 10,
                               spreadRadius: 1,
                               offset: const Offset(1, 1),
-                              color: const Color.fromARGB(47, 192, 192, 192)
-                                  .withOpacity(0.4),
+                              color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                             ),
                           ],
                         ),
                         child: DropdownButtonFormField<String>(
                           decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(30, 25, 0, 16),
+                            contentPadding: const EdgeInsets.fromLTRB(30, 25, 0, 16),
                             hintText: "Location",
-                            hintStyle: GoogleFonts.merriweather(
-                                fontSize: 0.028 * width),
+                            hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: const BorderSide(
@@ -747,8 +724,7 @@ class _TrainerEditProfileState extends State<TrainerEditProfile> {
                               blurRadius: 10,
                               spreadRadius: 1,
                               offset: const Offset(1, 1),
-                              color: const Color.fromARGB(47, 192, 192, 192)
-                                  .withOpacity(0.4),
+                              color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                             ),
                           ],
                         ),
@@ -756,11 +732,9 @@ class _TrainerEditProfileState extends State<TrainerEditProfile> {
                           controller: _bioController,
                           maxLines: 5,
                           decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(30, 16, 20, 16),
+                            contentPadding: const EdgeInsets.fromLTRB(30, 16, 20, 16),
                             hintText: 'Bio Description',
-                            hintStyle: GoogleFonts.merriweather(
-                                fontSize: 0.028 * width),
+                            hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                               borderSide: const BorderSide(
@@ -788,8 +762,7 @@ class _TrainerEditProfileState extends State<TrainerEditProfile> {
                         padding: const EdgeInsets.fromLTRB(25, 20, 30, 10),
                         child: Text(
                           'Born, Now living Near (no home addressess please)',
-                          style:
-                              GoogleFonts.merriweather(fontSize: 0.032 * width),
+                          style: GoogleFonts.merriweather(fontSize: 0.032 * width),
                         ),
                       ),
                       const SizedBox(
@@ -805,8 +778,7 @@ class _TrainerEditProfileState extends State<TrainerEditProfile> {
                               blurRadius: 10,
                               spreadRadius: 1,
                               offset: const Offset(1, 1),
-                              color: const Color.fromARGB(47, 192, 192, 192)
-                                  .withOpacity(0.4),
+                              color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                             ),
                           ],
                         ),
@@ -814,10 +786,8 @@ class _TrainerEditProfileState extends State<TrainerEditProfile> {
                           controller: _livingController,
                           maxLines: 5,
                           decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(30, 16, 20, 16),
-                            hintStyle: GoogleFonts.merriweather(
-                                fontSize: 0.028 * width),
+                            contentPadding: const EdgeInsets.fromLTRB(30, 16, 20, 16),
+                            hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                               borderSide: const BorderSide(

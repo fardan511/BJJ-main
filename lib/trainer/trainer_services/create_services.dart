@@ -75,13 +75,7 @@ class _TrainerCreateServicesState extends State<TrainerCreateServices> {
     'Fluent',
     'Professional',
   ];
-  List<String> location = [
-    'Antartica',
-    'Asia',
-    'Europe',
-    'North America',
-    'Oceania'
-  ];
+  List<String> location = ['Antartica', 'Asia', 'Europe', 'North America', 'Oceania'];
 
   void createService() async {
     final packages = [];
@@ -108,6 +102,16 @@ class _TrainerCreateServicesState extends State<TrainerCreateServices> {
       "user_id": FirebaseAuth.instance.currentUser!.uid,
       "user_name": FirebaseAuth.instance.currentUser!.displayName,
     });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.green,
+        content: Text(
+          'Your service has been created successfully',
+          style: GoogleFonts.merriweather(color: Colors.white),
+        ),
+      ),
+    );
   }
 
   @override
@@ -163,10 +167,7 @@ class _TrainerCreateServicesState extends State<TrainerCreateServices> {
                       child: Padding(
                         padding: const EdgeInsets.all(25.0),
                         child: StreamBuilder(
-                          stream: FirebaseFirestore.instance
-                              .collection('users')
-                              .doc(auth.currentUser!.uid)
-                              .snapshots(),
+                          stream: FirebaseFirestore.instance.collection('users').doc(auth.currentUser!.uid).snapshots(),
                           builder: (context, snapshot) {
                             if (!snapshot.hasData) {
                               return const SizedBox();
@@ -177,8 +178,7 @@ class _TrainerCreateServicesState extends State<TrainerCreateServices> {
                                   width: height * 0.2,
                                   height: height * 0.2,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(
-                                        10.0), // Adjust the value as needed
+                                    borderRadius: BorderRadius.circular(10.0), // Adjust the value as needed
                                     border: Border.all(
                                       color: Colors.white,
                                       width: 2.0,
@@ -188,22 +188,19 @@ class _TrainerCreateServicesState extends State<TrainerCreateServices> {
                                     borderRadius: BorderRadius.circular(
                                       30.0,
                                     ),
-                                    child:
-                                        snapshot.data!['userImage'] != null &&
-                                                snapshot.data!['userImage']
-                                                    .isNotEmpty
-                                            ? Image(
-                                                image: NetworkImage(
-                                                  snapshot.data!['userImage'],
-                                                ),
-                                                fit: BoxFit.cover,
-                                              )
-                                            : const Image(
-                                                image: AssetImage(
-                                                  'images/admin.png',
-                                                ),
-                                                height: 100,
-                                              ),
+                                    child: snapshot.data!['userImage'] != null && snapshot.data!['userImage'].isNotEmpty
+                                        ? Image(
+                                            image: NetworkImage(
+                                              snapshot.data!['userImage'],
+                                            ),
+                                            fit: BoxFit.cover,
+                                          )
+                                        : const Image(
+                                            image: AssetImage(
+                                              'images/admin.png',
+                                            ),
+                                            height: 100,
+                                          ),
                                   ),
                                 ),
                                 const SizedBox(height: 8),
@@ -287,8 +284,7 @@ class _TrainerCreateServicesState extends State<TrainerCreateServices> {
                 child: Center(
                   child: Text(
                     'Create a Service',
-                    style: GoogleFonts.merriweather(
-                        fontWeight: FontWeight.bold, fontSize: width * 0.045),
+                    style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.045),
                   ),
                 ),
               ),
@@ -350,18 +346,15 @@ class _TrainerCreateServicesState extends State<TrainerCreateServices> {
                               blurRadius: 10,
                               spreadRadius: 1,
                               offset: const Offset(1, 1),
-                              color: const Color.fromARGB(47, 192, 192, 192)
-                                  .withOpacity(0.4),
+                              color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                             ),
                           ],
                         ),
                         child: DropdownButtonFormField<String>(
                           decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(30, 25, 0, 16),
+                            contentPadding: const EdgeInsets.fromLTRB(30, 25, 0, 16),
                             hintText: "Select Category",
-                            hintStyle: GoogleFonts.merriweather(
-                                fontSize: 0.028 * width),
+                            hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: const BorderSide(
@@ -421,18 +414,15 @@ class _TrainerCreateServicesState extends State<TrainerCreateServices> {
                               blurRadius: 10,
                               spreadRadius: 1,
                               offset: const Offset(1, 1),
-                              color: const Color.fromARGB(47, 192, 192, 192)
-                                  .withOpacity(0.4),
+                              color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                             ),
                           ],
                         ),
                         child: DropdownButtonFormField<String>(
                           decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(30, 25, 0, 16),
+                            contentPadding: const EdgeInsets.fromLTRB(30, 25, 0, 16),
                             hintText: "Level",
-                            hintStyle: GoogleFonts.merriweather(
-                                fontSize: 0.028 * width),
+                            hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: const BorderSide(
@@ -492,18 +482,15 @@ class _TrainerCreateServicesState extends State<TrainerCreateServices> {
                               blurRadius: 10,
                               spreadRadius: 1,
                               offset: const Offset(1, 1),
-                              color: const Color.fromARGB(47, 192, 192, 192)
-                                  .withOpacity(0.4),
+                              color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                             ),
                           ],
                         ),
                         child: DropdownButtonFormField<String>(
                           decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(30, 25, 0, 16),
+                            contentPadding: const EdgeInsets.fromLTRB(30, 25, 0, 16),
                             hintText: "Locations",
-                            hintStyle: GoogleFonts.merriweather(
-                                fontSize: 0.028 * width),
+                            hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: const BorderSide(
@@ -562,8 +549,7 @@ class _TrainerCreateServicesState extends State<TrainerCreateServices> {
                               blurRadius: 10,
                               spreadRadius: 1,
                               offset: const Offset(1, 1),
-                              color: const Color.fromARGB(47, 192, 192, 192)
-                                  .withOpacity(0.4),
+                              color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                             ),
                           ],
                         ),
@@ -571,11 +557,9 @@ class _TrainerCreateServicesState extends State<TrainerCreateServices> {
                           controller: _descriptionController,
                           maxLines: 5,
                           decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(30, 16, 20, 16),
+                            contentPadding: const EdgeInsets.fromLTRB(30, 16, 20, 16),
                             hintText: 'Project Description',
-                            hintStyle: GoogleFonts.merriweather(
-                                fontSize: 0.028 * width),
+                            hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                               borderSide: const BorderSide(
@@ -678,8 +662,7 @@ class _TrainerCreateServicesState extends State<TrainerCreateServices> {
                       SizedBox(
                         width: width * 0.8,
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment
-                              .start, // Align text to the left
+                          crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
                           children: [
                             Text(
                               'FAQ',
@@ -739,8 +722,7 @@ class _TrainerCreateServicesState extends State<TrainerCreateServices> {
                                 children: [
                                   Text(
                                     'Make the project Featured',
-                                    style: GoogleFonts.merriweather(
-                                        fontSize: width * 0.035),
+                                    style: GoogleFonts.merriweather(fontSize: width * 0.035),
                                   ),
                                   Checkbox(
                                     value: isFeatured,

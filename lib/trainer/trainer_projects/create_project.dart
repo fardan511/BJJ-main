@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:bjj/trainer/text_field.dart';
 import 'package:bjj/trainer/trainer_drawer/trainer_drawer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -41,22 +43,8 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
   List<String> projectType = ['Fixed', 'Hourly'];
   List<String> location = ['Australia', 'Germany', 'India', 'UAE', 'USA'];
   List<String> projectLevel = ['Basic Level', 'Expensive', 'Moderate Level'];
-  List<String> projectDuration = [
-    '1-3 Weeks',
-    '1-5 Days',
-    'Long Term',
-    'Month',
-    'Other',
-    'Short term',
-    'Year'
-  ];
-  List<String> englishLevel = [
-    'Basic Language',
-    'Bilingual',
-    'Fluent',
-    'Native',
-    'Prfessional'
-  ];
+  List<String> projectDuration = ['1-3 Weeks', '1-5 Days', 'Long Term', 'Month', 'Other', 'Short term', 'Year'];
+  List<String> englishLevel = ['Basic Language', 'Bilingual', 'Fluent', 'Native', 'Prfessional'];
 
   bool submitting = false;
 
@@ -90,6 +78,16 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
       () {
         submitting = false;
       },
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.green,
+        content: Text(
+          'Your project has been created successfully',
+          style: GoogleFonts.merriweather(color: Colors.white),
+        ),
+      ),
     );
   }
 
@@ -150,10 +148,8 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                         child: Padding(
                           padding: const EdgeInsets.all(25.0),
                           child: StreamBuilder(
-                            stream: FirebaseFirestore.instance
-                                .collection('users')
-                                .doc(auth.currentUser!.uid)
-                                .snapshots(),
+                            stream:
+                                FirebaseFirestore.instance.collection('users').doc(auth.currentUser!.uid).snapshots(),
                             builder: (context, snapshot) {
                               if (!snapshot.hasData) {
                                 return const SizedBox();
@@ -184,8 +180,7 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                                     width: height * 0.2,
                                     height: height * 0.2,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                          10.0), // Adjust the value as needed
+                                      borderRadius: BorderRadius.circular(10.0), // Adjust the value as needed
                                       border: Border.all(
                                         color: Colors.white,
                                         width: 2.0,
@@ -196,9 +191,7 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                                         30.0,
                                       ),
                                       child:
-                                          snapshot.data!['userImage'] != null &&
-                                                  snapshot.data!['userImage']
-                                                      .isNotEmpty
+                                          snapshot.data!['userImage'] != null && snapshot.data!['userImage'].isNotEmpty
                                               ? Image(
                                                   image: NetworkImage(
                                                     snapshot.data!['userImage'],
@@ -260,8 +253,7 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
                                         shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(30),
+                                          borderRadius: BorderRadius.circular(30),
                                         ),
                                         backgroundColor: Colors.transparent,
                                         elevation: 0,
@@ -295,8 +287,7 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                   child: Center(
                     child: Text(
                       'My Coach Coaches',
-                      style: GoogleFonts.merriweather(
-                          fontWeight: FontWeight.bold, fontSize: width * 0.045),
+                      style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.045),
                     ),
                   ),
                 ),
@@ -340,18 +331,15 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                                 blurRadius: 10,
                                 spreadRadius: 1,
                                 offset: const Offset(1, 1),
-                                color: const Color.fromARGB(47, 192, 192, 192)
-                                    .withOpacity(0.4),
+                                color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                               ),
                             ],
                           ),
                           child: DropdownButtonFormField<String>(
                             decoration: InputDecoration(
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(30, 25, 0, 0),
+                              contentPadding: const EdgeInsets.fromLTRB(30, 25, 0, 0),
                               hintText: "Category",
-                              hintStyle: GoogleFonts.merriweather(
-                                  fontSize: 0.028 * width),
+                              hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide: const BorderSide(
@@ -411,18 +399,15 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                                 blurRadius: 10,
                                 spreadRadius: 1,
                                 offset: const Offset(1, 1),
-                                color: const Color.fromARGB(47, 192, 192, 192)
-                                    .withOpacity(0.4),
+                                color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                               ),
                             ],
                           ),
                           child: DropdownButtonFormField<String>(
                             decoration: InputDecoration(
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(30, 25, 0, 0),
+                              contentPadding: const EdgeInsets.fromLTRB(30, 25, 0, 0),
                               hintText: "Coach Level",
-                              hintStyle: GoogleFonts.merriweather(
-                                  fontSize: 0.028 * width),
+                              hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide: const BorderSide(
@@ -482,18 +467,15 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                                 blurRadius: 10,
                                 spreadRadius: 1,
                                 offset: const Offset(1, 1),
-                                color: const Color.fromARGB(47, 192, 192, 192)
-                                    .withOpacity(0.4),
+                                color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                               ),
                             ],
                           ),
                           child: DropdownButtonFormField<String>(
                             decoration: InputDecoration(
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(30, 25, 0, 0),
+                              contentPadding: const EdgeInsets.fromLTRB(30, 25, 0, 0),
                               hintText: "Project Type",
-                              hintStyle: GoogleFonts.merriweather(
-                                  fontSize: 0.028 * width),
+                              hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide: const BorderSide(
@@ -564,8 +546,7 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                                 blurRadius: 10,
                                 spreadRadius: 1,
                                 offset: const Offset(1, 1),
-                                color: const Color.fromARGB(47, 192, 192, 192)
-                                    .withOpacity(0.4),
+                                color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                               ),
                             ],
                           ),
@@ -573,11 +554,9 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                             controller: _skillsController,
                             maxLines: 5,
                             decoration: InputDecoration(
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(30, 16, 20, 16),
+                              contentPadding: const EdgeInsets.fromLTRB(30, 16, 20, 16),
                               hintText: 'Skills Description',
-                              hintStyle: GoogleFonts.merriweather(
-                                  fontSize: 0.028 * width),
+                              hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
                                 borderSide: const BorderSide(
@@ -612,18 +591,15 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                                 blurRadius: 10,
                                 spreadRadius: 1,
                                 offset: const Offset(1, 1),
-                                color: const Color.fromARGB(47, 192, 192, 192)
-                                    .withOpacity(0.4),
+                                color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                               ),
                             ],
                           ),
                           child: DropdownButtonFormField<String>(
                             decoration: InputDecoration(
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(30, 25, 0, 0),
+                              contentPadding: const EdgeInsets.fromLTRB(30, 25, 0, 0),
                               hintText: "Project Level",
-                              hintStyle: GoogleFonts.merriweather(
-                                  fontSize: 0.028 * width),
+                              hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide: const BorderSide(
@@ -683,18 +659,15 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                                 blurRadius: 10,
                                 spreadRadius: 1,
                                 offset: const Offset(1, 1),
-                                color: const Color.fromARGB(47, 192, 192, 192)
-                                    .withOpacity(0.4),
+                                color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                               ),
                             ],
                           ),
                           child: DropdownButtonFormField<String>(
                             decoration: InputDecoration(
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(30, 25, 0, 0),
+                              contentPadding: const EdgeInsets.fromLTRB(30, 25, 0, 0),
                               hintText: "Project Duration",
-                              hintStyle: GoogleFonts.merriweather(
-                                  fontSize: 0.028 * width),
+                              hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide: const BorderSide(
@@ -754,18 +727,15 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                                 blurRadius: 10,
                                 spreadRadius: 1,
                                 offset: const Offset(1, 1),
-                                color: const Color.fromARGB(47, 192, 192, 192)
-                                    .withOpacity(0.4),
+                                color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                               ),
                             ],
                           ),
                           child: DropdownButtonFormField<String>(
                             decoration: InputDecoration(
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(30, 25, 0, 0),
+                              contentPadding: const EdgeInsets.fromLTRB(30, 25, 0, 0),
                               hintText: "English Level",
-                              hintStyle: GoogleFonts.merriweather(
-                                  fontSize: 0.028 * width),
+                              hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide: const BorderSide(
@@ -825,18 +795,15 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                                 blurRadius: 10,
                                 spreadRadius: 1,
                                 offset: const Offset(1, 1),
-                                color: const Color.fromARGB(47, 192, 192, 192)
-                                    .withOpacity(0.4),
+                                color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                               ),
                             ],
                           ),
                           child: DropdownButtonFormField<String>(
                             decoration: InputDecoration(
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(30, 25, 0, 0),
+                              contentPadding: const EdgeInsets.fromLTRB(30, 25, 0, 0),
                               hintText: "Location",
-                              hintStyle: GoogleFonts.merriweather(
-                                  fontSize: 0.028 * width),
+                              hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide: const BorderSide(
@@ -896,8 +863,7 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                                 blurRadius: 10,
                                 spreadRadius: 1,
                                 offset: const Offset(1, 1),
-                                color: const Color.fromARGB(47, 192, 192, 192)
-                                    .withOpacity(0.4),
+                                color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                               ),
                             ],
                           ),
@@ -905,11 +871,9 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                             controller: _languageController,
                             maxLines: 5,
                             decoration: InputDecoration(
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(30, 16, 20, 0),
+                              contentPadding: const EdgeInsets.fromLTRB(30, 16, 20, 0),
                               hintText: 'Language',
-                              hintStyle: GoogleFonts.merriweather(
-                                  fontSize: 0.028 * width),
+                              hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
                                 borderSide: const BorderSide(
@@ -944,8 +908,7 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                                 blurRadius: 10,
                                 spreadRadius: 1,
                                 offset: const Offset(1, 1),
-                                color: const Color.fromARGB(47, 192, 192, 192)
-                                    .withOpacity(0.4),
+                                color: const Color.fromARGB(47, 192, 192, 192).withOpacity(0.4),
                               ),
                             ],
                           ),
@@ -953,11 +916,9 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                             controller: _descriptionController,
                             maxLines: 5,
                             decoration: InputDecoration(
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(30, 16, 20, 0),
+                              contentPadding: const EdgeInsets.fromLTRB(30, 16, 20, 0),
                               hintText: 'Bio Description',
-                              hintStyle: GoogleFonts.merriweather(
-                                  fontSize: 0.028 * width),
+                              hintStyle: GoogleFonts.merriweather(fontSize: 0.028 * width),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
                                 borderSide: const BorderSide(
@@ -985,8 +946,7 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                           padding: EdgeInsets.only(left: width * 0.05),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment
-                                .start, // Aligns children to the left
+                            crossAxisAlignment: CrossAxisAlignment.start, // Aligns children to the left
                             children: [
                               // Text(
                               //   'Attachments',
@@ -1013,8 +973,7 @@ class _TrainerCreateProjectState extends State<TrainerCreateProject> {
                                 children: [
                                   Text(
                                     'Make the project Featured',
-                                    style: GoogleFonts.merriweather(
-                                        fontSize: width * 0.04),
+                                    style: GoogleFonts.merriweather(fontSize: width * 0.04),
                                   ),
                                   Checkbox(
                                     value: isFeatured,
