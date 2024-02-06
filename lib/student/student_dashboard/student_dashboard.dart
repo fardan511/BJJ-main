@@ -80,11 +80,10 @@ class _StudentDashboardState extends State<StudentDashboard> {
                         Center(
                           child: CarouselSlider(
                             options: CarouselOptions(
-                              autoPlay: true,
+                              autoPlay: kDebugMode ? false : true,
                               height: 250,
                               autoPlayCurve: Curves.fastOutSlowIn,
-                              autoPlayAnimationDuration:
-                                  const Duration(seconds: 2),
+                              autoPlayAnimationDuration: const Duration(seconds: 2),
                               autoPlayInterval: const Duration(seconds: 2),
                               enlargeCenterPage: true,
                               aspectRatio: 2.0,
@@ -111,9 +110,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
                     .collection('users')
                     .where('role', isEqualTo: 'teacher')
                     .snapshots()
-                    .map((event) => event.docs
-                        .map((e) => TrainerModel.fromJson(e.data()))
-                        .toList()),
+                    .map((event) => event.docs.map((e) => TrainerModel.fromJson(e.data())).toList()),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) return const SizedBox();
 
@@ -134,25 +131,21 @@ class _StudentDashboardState extends State<StudentDashboard> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    TrainerScreen(trainer: trainer),
+                                builder: (context) => TrainerScreen(trainer: trainer),
                               ),
                             );
                           },
                           style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.transparent),
+                            backgroundColor: MaterialStateProperty.all(Colors.transparent),
                             elevation: MaterialStateProperty.all(0),
-                            overlayColor:
-                                MaterialStateProperty.all(Colors.transparent),
+                            overlayColor: MaterialStateProperty.all(Colors.transparent),
                             side: MaterialStateProperty.all(BorderSide.none),
                           ),
                           child: UserCard(
                             name: "${trainer.profileName}",
                             hourlyRate: '\$${trainer.hourlyRate}',
                             starsRating: 4.5,
-                            avatarImagePath: trainer.userImage != null &&
-                                    trainer.userImage!.isNotEmpty
+                            avatarImagePath: trainer.userImage != null && trainer.userImage!.isNotEmpty
                                 ? trainer.userImage!
                                 : AppLiterals.defaultAvatar,
                             country: "${trainer.location}",
@@ -172,8 +165,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
                 child: Column(
                   children: [
                     Row(
-                      mainAxisAlignment:
-                          MainAxisAlignment.center, // Center vertically
+                      mainAxisAlignment: MainAxisAlignment.center, // Center vertically
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
@@ -227,8 +219,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
                     SizedBox(width: width * 0.02),
                     InkWell(
                       onTap: () {
-                        _launchInstagramURL(
-                            'https://www.instagram.com/bjjtrainingpros/');
+                        _launchInstagramURL('https://www.instagram.com/bjjtrainingpros/');
                       },
                       child: Container(
                         width: width * 0.15,
@@ -250,8 +241,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
                     SizedBox(width: width * 0.02),
                     InkWell(
                       onTap: () {
-                        _launchYoutubeURL(
-                            'https://www.youtube.com/@BjjTrainingPros');
+                        _launchYoutubeURL('https://www.youtube.com/@BjjTrainingPros');
                       },
                       child: Container(
                         width: width * 0.15,
@@ -522,8 +512,7 @@ class UserCard extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black, // Button color
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                          20.0), // Adjust the value for the desired roundness
+                      borderRadius: BorderRadius.circular(20.0), // Adjust the value for the desired roundness
                     ),
                   ),
                   child: Row(

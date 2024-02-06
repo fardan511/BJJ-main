@@ -269,7 +269,7 @@ class _TrainerMessageState extends State<TrainerMessage> {
                                     ),
                                   );
                                 },
-                                title: Text(doc['user_data'][otherKey]['name']),
+                                title: Text(doc['user_data'][otherKey]['name'] ?? ''),
                                 subtitle: Text(doc['messages'].first['content']),
                               ),
                             ),

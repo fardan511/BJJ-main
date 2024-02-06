@@ -78,11 +78,10 @@ class _TrainerHomescreenState extends State<TrainerHomescreen> {
                         children: [
                           CarouselSlider(
                             options: CarouselOptions(
-                              autoPlay: true,
+                              autoPlay: kDebugMode ? false : true,
                               height: 250,
                               autoPlayCurve: Curves.fastOutSlowIn,
-                              autoPlayAnimationDuration:
-                                  const Duration(seconds: 2),
+                              autoPlayAnimationDuration: const Duration(seconds: 2),
                               autoPlayInterval: const Duration(seconds: 2),
                               enlargeCenterPage: true,
                               // aspectRatio: 2.0,
@@ -109,8 +108,7 @@ class _TrainerHomescreenState extends State<TrainerHomescreen> {
                     decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(18.0),
-                      border:
-                          Border.all(color: Colors.grey.shade600, width: 3.0),
+                      border: Border.all(color: Colors.grey.shade600, width: 3.0),
                     ),
                     child: Column(
                       children: [
@@ -126,8 +124,7 @@ class _TrainerHomescreenState extends State<TrainerHomescreen> {
                           height: 20,
                         ),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(
-                              width * 0.07, 0, width * 0.07, 0),
+                          padding: EdgeInsets.fromLTRB(width * 0.07, 0, width * 0.07, 0),
                           child: RichText(
                             textAlign: TextAlign.justify,
                             text: TextSpan(
@@ -144,8 +141,7 @@ class _TrainerHomescreenState extends State<TrainerHomescreen> {
                           height: 20,
                         ),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(
-                              width * 0.07, 0, width * 0.07, 0),
+                          padding: EdgeInsets.fromLTRB(width * 0.07, 0, width * 0.07, 0),
                           child: RichText(
                             textAlign: TextAlign.justify,
                             text: TextSpan(
@@ -168,8 +164,7 @@ class _TrainerHomescreenState extends State<TrainerHomescreen> {
                   child: Column(
                     children: [
                       Row(
-                        mainAxisAlignment:
-                            MainAxisAlignment.center, // Center vertically
+                        mainAxisAlignment: MainAxisAlignment.center, // Center vertically
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SizedBox(
@@ -223,8 +218,7 @@ class _TrainerHomescreenState extends State<TrainerHomescreen> {
                       SizedBox(width: width * 0.02),
                       InkWell(
                         onTap: () {
-                          _launchInstagramURL(
-                              'https://www.instagram.com/bjjtrainingpros/');
+                          _launchInstagramURL('https://www.instagram.com/bjjtrainingpros/');
                         },
                         child: Container(
                           width: width * 0.15,
@@ -246,8 +240,7 @@ class _TrainerHomescreenState extends State<TrainerHomescreen> {
                       SizedBox(width: width * 0.02),
                       InkWell(
                         onTap: () {
-                          _launchYoutubeURL(
-                              'https://www.youtube.com/@BjjTrainingPros');
+                          _launchYoutubeURL('https://www.youtube.com/@BjjTrainingPros');
                         },
                         child: Container(
                           width: width * 0.15,
@@ -493,8 +486,7 @@ class UserCard extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black, // Button color
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                          20.0), // Adjust the value for the desired roundness
+                      borderRadius: BorderRadius.circular(20.0), // Adjust the value for the desired roundness
                     ),
                   ),
                   child: Row(
@@ -506,8 +498,7 @@ class UserCard extends StatelessWidget {
                       const SizedBox(width: 8),
                       Text(
                         'BJJ Trainer',
-                        style: GoogleFonts.merriweather(
-                            color: Colors.white), // Text color
+                        style: GoogleFonts.merriweather(color: Colors.white), // Text color
                       ),
                     ],
                   ),
@@ -531,8 +522,7 @@ class UserCard extends StatelessWidget {
                       const SizedBox(width: 8),
                       Text(
                         'USA',
-                        style: GoogleFonts.merriweather(
-                            color: Colors.white), // Text color
+                        style: GoogleFonts.merriweather(color: Colors.white), // Text color
                       ),
                     ],
                   ),

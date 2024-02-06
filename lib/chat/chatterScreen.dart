@@ -1,4 +1,3 @@
-import 'package:bjj/models/trainer_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -70,10 +69,10 @@ class ChatterScreenState extends State<ChatterScreen> {
         },
         'user_data': {
           _auth.currentUser!.uid: {
-            'name': _auth.currentUser!.displayName,
+            'name': _auth.currentUser!.displayName ?? '',
           },
           widget.user.id: {
-            'name': widget.user.profileName,
+            'name': widget.user.userName ?? '',
           }
         },
         'messages': [],
@@ -116,18 +115,18 @@ class ChatterScreenState extends State<ChatterScreen> {
                       final data = snapshot.data!.data()!;
 
                       final messages = data['messages'] as List;
-                      messages.sort((a, b) => b['time'].compareTo(a['time']));
+                      // messages.sort((a, b) => b['time'].compareTo(a['time']));
 
-                      final readStatusUpdatedList = [...messages];
-                      for (var message in readStatusUpdatedList) {
-                        if (message['from'] == widget.user.id) {
-                          message['read'] = true;
-                        }
-                      }
+                      // final readStatusUpdatedList = [...messages];
+                      // for (var message in readStatusUpdatedList) {
+                      //   if (message['from'] == widget.user.id) {
+                      //     message['read'] = true;
+                      //   }
+                      // }
 
-                      _firestore.collection('messages').doc(docID).update({
-                        'messages': readStatusUpdatedList,
-                      });
+                      // _firestore.collection('messages').doc(docID).update({
+                      //   'messages': readStatusUpdatedList,
+                      // });
 
                       return ListView.builder(
                         shrinkWrap: true,
