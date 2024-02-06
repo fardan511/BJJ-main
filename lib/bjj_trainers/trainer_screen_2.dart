@@ -11,7 +11,6 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../core/literals.dart';
-import 'trainer_projects_screen.dart';
 
 class TrainerScreen2 extends StatefulWidget {
   final TrainerModel trainer;
@@ -418,7 +417,7 @@ class _TrainerScreenState extends State<TrainerScreen2> {
                                         );
                                       },
                                       child: Container(
-                                        width: width * 0.8,
+                                        width: width * 0.9,
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(15.0),
@@ -481,16 +480,19 @@ class _TrainerScreenState extends State<TrainerScreen2> {
                                               const SizedBox(height: 15),
                                               Row(
                                                 children: [
-                                                  Text(
-                                                    data['title'],
-                                                    style: GoogleFonts
-                                                        .merriweather(
-                                                            fontSize:
-                                                                width * 0.05,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                    textAlign: TextAlign.left,
+                                                  Container(
+                                                    width: width * 0.70,
+                                                    child: Text(
+                                                      data['title'],
+                                                      style: GoogleFonts
+                                                          .merriweather(
+                                                              fontSize:
+                                                                  width * 0.05,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                      textAlign: TextAlign.left,
+                                                    ),
                                                   ),
                                                   const Spacer(),
                                                 ],
