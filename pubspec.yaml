@@ -35,12 +35,18 @@ dependencies:
   flutter_svg: ^2.0.9
   get_storage: ^2.1.1
   url_launcher: ^6.2.4
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^3.0.1
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "images/applogo.png"
 
 flutter:
   uses-material-design: true
