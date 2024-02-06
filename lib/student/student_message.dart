@@ -70,7 +70,10 @@ class _StudentMessageState extends State<StudentMessage> {
                       child: Padding(
                         padding: const EdgeInsets.all(25.0),
                         child: StreamBuilder(
-                          stream: FirebaseFirestore.instance.collection('users').doc(auth.currentUser!.uid).snapshots(),
+                          stream: FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(auth.currentUser!.uid)
+                              .snapshots(),
                           builder: (context, snapshot) {
                             if (!snapshot.hasData) {
                               return const SizedBox();
@@ -101,7 +104,8 @@ class _StudentMessageState extends State<StudentMessage> {
                                   width: height * 0.2,
                                   height: height * 0.2,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.0), // Adjust the value as needed
+                                    borderRadius: BorderRadius.circular(
+                                        10.0), // Adjust the value as needed
                                     border: Border.all(
                                       color: Colors.white,
                                       width: 2.0,
@@ -111,19 +115,22 @@ class _StudentMessageState extends State<StudentMessage> {
                                     borderRadius: BorderRadius.circular(
                                       30.0,
                                     ),
-                                    child: snapshot.data!['userImage'] != null && snapshot.data!['userImage'].isNotEmpty
-                                        ? Image(
-                                            image: NetworkImage(
-                                              snapshot.data!['userImage'],
-                                            ),
-                                            fit: BoxFit.cover,
-                                          )
-                                        : const Image(
-                                            image: AssetImage(
-                                              'images/admin.png',
-                                            ),
-                                            height: 100,
-                                          ),
+                                    child:
+                                        snapshot.data!['userImage'] != null &&
+                                                snapshot.data!['userImage']
+                                                    .isNotEmpty
+                                            ? Image(
+                                                image: NetworkImage(
+                                                  snapshot.data!['userImage'],
+                                                ),
+                                                fit: BoxFit.cover,
+                                              )
+                                            : const Image(
+                                                image: AssetImage(
+                                                  'images/admin.png',
+                                                ),
+                                                height: 100,
+                                              ),
                                   ),
                                 ),
                                 const SizedBox(height: 8),
@@ -147,47 +154,47 @@ class _StudentMessageState extends State<StudentMessage> {
                                 const SizedBox(
                                   height: 25,
                                 ),
-                                Container(
-                                  width: width * 0.35,
-                                  height: height * 0.06,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    gradient: const LinearGradient(
-                                      colors: [
-                                        Color.fromARGB(162, 209, 14, 14),
-                                        Color.fromARGB(139, 248, 3, 3),
-                                      ],
-                                      begin: Alignment.centerLeft,
-                                      end: Alignment.centerRight,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        blurRadius: 5,
-                                        spreadRadius: 2,
-                                        offset: const Offset(0, 3),
-                                      ),
-                                    ],
-                                  ),
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                      ),
-                                      backgroundColor: Colors.transparent,
-                                      elevation: 0,
-                                    ),
-                                    child: Text(
-                                      'View Profile',
-                                      style: GoogleFonts.merriweather(
-                                        fontSize: 0.032 * width,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                // Container(
+                                //   width: width * 0.35,
+                                //   height: height * 0.06,
+                                //   decoration: BoxDecoration(
+                                //     borderRadius: BorderRadius.circular(30),
+                                //     gradient: const LinearGradient(
+                                //       colors: [
+                                //         Color.fromARGB(162, 209, 14, 14),
+                                //         Color.fromARGB(139, 248, 3, 3),
+                                //       ],
+                                //       begin: Alignment.centerLeft,
+                                //       end: Alignment.centerRight,
+                                //     ),
+                                //     boxShadow: [
+                                //       BoxShadow(
+                                //         color: Colors.grey.withOpacity(0.5),
+                                //         blurRadius: 5,
+                                //         spreadRadius: 2,
+                                //         offset: const Offset(0, 3),
+                                //       ),
+                                //     ],
+                                //   ),
+                                //   child: ElevatedButton(
+                                //     onPressed: () {},
+                                //     style: ElevatedButton.styleFrom(
+                                //       shape: RoundedRectangleBorder(
+                                //         borderRadius: BorderRadius.circular(30),
+                                //       ),
+                                //       backgroundColor: Colors.transparent,
+                                //       elevation: 0,
+                                //     ),
+                                //     child: Text(
+                                //       'View Profile',
+                                //       style: GoogleFonts.merriweather(
+                                //         fontSize: 0.032 * width,
+                                //         fontWeight: FontWeight.bold,
+                                //         color: Colors.white,
+                                //       ),
+                                //     ),
+                                //   ),
+                                // ),
                               ],
                             );
                           },
@@ -207,7 +214,8 @@ class _StudentMessageState extends State<StudentMessage> {
                 child: Center(
                   child: Text(
                     'Message',
-                    style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.05),
+                    style: GoogleFonts.merriweather(
+                        fontWeight: FontWeight.bold, fontSize: width * 0.05),
                   ),
                 ),
               ),
@@ -235,7 +243,9 @@ class _StudentMessageState extends State<StudentMessage> {
                       child: Center(
                         child: Text(
                           'No Message found!',
-                          style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.03),
+                          style: GoogleFonts.merriweather(
+                              fontWeight: FontWeight.bold,
+                              fontSize: width * 0.03),
                         ),
                       ),
                     );
@@ -250,7 +260,9 @@ class _StudentMessageState extends State<StudentMessage> {
                         itemBuilder: (context, index) {
                           final doc = snapshot.data!.docs[index];
 
-                          final otherKey = doc['user_data'].keys.firstWhere((k) => k != auth.currentUser!.uid);
+                          final otherKey = doc['user_data']
+                              .keys
+                              .firstWhere((k) => k != auth.currentUser!.uid);
 
                           return Center(
                             child: Container(
@@ -258,18 +270,42 @@ class _StudentMessageState extends State<StudentMessage> {
                               color: Colors.white,
                               child: ListTile(
                                 onTap: () async {
-                                  final doc = await FirebaseFirestore.instance.collection('users').doc(otherKey).get();
+                                  final doc = await FirebaseFirestore.instance
+                                      .collection('users')
+                                      .doc(otherKey)
+                                      .get();
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => ChatterScreen(
-                                        user: TrainerModel.fromJson(doc.data()!),
+                                        user:
+                                            TrainerModel.fromJson(doc.data()!),
                                       ),
                                     ),
                                   );
                                 },
-                                title: Text(doc['user_data'][otherKey]['name']),
-                                subtitle: Text(doc['messages'].first['content']),
+
+                                // '${snapshot.data!["userName"] ?? snapshot.data!["username"]}',
+                                //   style: GoogleFonts.merriweather(
+                                //     fontWeight: FontWeight.bold,
+                                //     color: Colors.black,
+                                //     fontSize: width * 0.05,
+                                title: Text(
+                                  doc['user_data'][otherKey]['name'],
+                                  style: GoogleFonts.merriweather(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                    fontSize: width * 0.045,
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  doc['messages'].first['content'],
+                                  style: GoogleFonts.merriweather(
+                                    // fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                    fontSize: width * 0.04,
+                                  ),
+                                ),
                               ),
                             ),
                           );
@@ -277,6 +313,9 @@ class _StudentMessageState extends State<StudentMessage> {
                         separatorBuilder: (context, index) => const Divider()),
                   );
                 },
+              ),
+              SizedBox(
+                height: height,
               ),
             ],
           ),

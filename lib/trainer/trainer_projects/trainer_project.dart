@@ -1,3 +1,5 @@
+import 'package:bjj/bjj_trainers/trainer_screen_2.dart';
+import 'package:bjj/models/trainer_model.dart';
 import 'package:bjj/trainer/trainer_drawer/trainer_drawer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -68,7 +70,10 @@ class _TrainerProjectState extends State<TrainerProject> {
                       child: Padding(
                         padding: const EdgeInsets.all(25.0),
                         child: StreamBuilder(
-                          stream: FirebaseFirestore.instance.collection('users').doc(auth.currentUser!.uid).snapshots(),
+                          stream: FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(auth.currentUser!.uid)
+                              .snapshots(),
                           builder: (context, snapshot) {
                             if (!snapshot.hasData) {
                               return const SizedBox();
@@ -99,7 +104,8 @@ class _TrainerProjectState extends State<TrainerProject> {
                                   width: height * 0.2,
                                   height: height * 0.2,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.0), // Adjust the value as needed
+                                    borderRadius: BorderRadius.circular(
+                                        10.0), // Adjust the value as needed
                                     border: Border.all(
                                       color: Colors.white,
                                       width: 2.0,
@@ -109,19 +115,22 @@ class _TrainerProjectState extends State<TrainerProject> {
                                     borderRadius: BorderRadius.circular(
                                       30.0,
                                     ),
-                                    child: snapshot.data!['userImage'] != null && snapshot.data!['userImage'].isNotEmpty
-                                        ? Image(
-                                            image: NetworkImage(
-                                              snapshot.data!['userImage'],
-                                            ),
-                                            fit: BoxFit.cover,
-                                          )
-                                        : const Image(
-                                            image: AssetImage(
-                                              'images/admin.png',
-                                            ),
-                                            height: 100,
-                                          ),
+                                    child:
+                                        snapshot.data!['userImage'] != null &&
+                                                snapshot.data!['userImage']
+                                                    .isNotEmpty
+                                            ? Image(
+                                                image: NetworkImage(
+                                                  snapshot.data!['userImage'],
+                                                ),
+                                                fit: BoxFit.cover,
+                                              )
+                                            : const Image(
+                                                image: AssetImage(
+                                                  'images/admin.png',
+                                                ),
+                                                height: 100,
+                                              ),
                                   ),
                                 ),
                                 const SizedBox(height: 8),
@@ -168,7 +177,17 @@ class _TrainerProjectState extends State<TrainerProject> {
                                     ],
                                   ),
                                   child: ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => TrainerScreen2(
+                                            trainer: TrainerModel.fromJson(
+                                                snapshot.data!.data()!),
+                                          ),
+                                        ),
+                                      );
+                                    },
                                     style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
@@ -205,7 +224,8 @@ class _TrainerProjectState extends State<TrainerProject> {
                 child: Center(
                   child: Text(
                     'Project',
-                    style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.05),
+                    style: GoogleFonts.merriweather(
+                        fontWeight: FontWeight.bold, fontSize: width * 0.05),
                   ),
                 ),
               ),
@@ -231,7 +251,9 @@ class _TrainerProjectState extends State<TrainerProject> {
                       child: Center(
                         child: Text(
                           'No result found!',
-                          style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.03),
+                          style: GoogleFonts.merriweather(
+                              fontWeight: FontWeight.bold,
+                              fontSize: width * 0.03),
                         ),
                       ),
                     );
@@ -247,7 +269,8 @@ class _TrainerProjectState extends State<TrainerProject> {
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => TrainerProjectDetails(data: snapshot.data!.docs[index]),
+                                builder: (context) => TrainerProjectDetails(
+                                    data: snapshot.data!.docs[index]),
                               ),
                             );
                           },
@@ -264,25 +287,31 @@ class _TrainerProjectState extends State<TrainerProject> {
                               children: [
                                 Text(
                                   snapshot.data!.docs[index]['projectTitle'],
-                                  style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.04),
+                                  style: GoogleFonts.merriweather(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: width * 0.04),
                                 ),
                                 const SizedBox(height: 8.0),
                                 Text(
                                   snapshot.data!.docs[index]['description'],
-                                  style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.03),
+                                  style: GoogleFonts.merriweather(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: width * 0.03),
                                 ),
                                 Row(
                                   children: [
                                     Text(
                                       "Duration: ${snapshot.data!.docs[index]['projectDuration']}",
-                                      style:
-                                          GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.03),
+                                      style: GoogleFonts.merriweather(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: width * 0.03),
                                     ),
                                     const SizedBox(width: 12.0),
                                     Text(
                                       "Price: \$${snapshot.data!.docs[index]['price']}",
-                                      style:
-                                          GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.03),
+                                      style: GoogleFonts.merriweather(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: width * 0.03),
                                     ),
                                   ],
                                 ),

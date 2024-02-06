@@ -1,19 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:bjj/login/login_page.dart';
-import 'package:bjj/student/student_dispute.dart';
-import 'package:bjj/student/student_edit_profile.dart';
 import 'package:bjj/student/student_following.dart';
 import 'package:bjj/student/student_dashboard/student_dashboard.dart';
 import 'package:bjj/student/student_message.dart';
 import 'package:bjj/student/student_project_wishlist.dart';
-// import 'package:bjj/student/student_projects/student_cencel_project.dart';
-// import 'package:bjj/student/student_projects/student_complete_project.dart';
-// import 'package:bjj/student/student_projects/student_create_project.dart';
-// import 'package:bjj/student/student_projects/student_ongoing_project.dart';
-// import 'package:bjj/student/student_projects/student_project.dart';
-// import 'package:bjj/student/student_services/student_cencelled_services.dart';
-// import 'package:bjj/student/student_services/student_complete_services.dart';
 import 'package:bjj/student/student_services/student_ongoing_services.dart';
 import 'package:bjj/student/student_verification.dart';
 import 'package:bjj/student/student_wallet.dart';
@@ -36,7 +27,7 @@ class StudentAppDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           SizedBox(
-            height: height * 0.28,
+            height: height * 0.30,
             child: DrawerHeader(
               decoration: const BoxDecoration(
                 color: Colors.black,
@@ -248,66 +239,66 @@ class StudentAppDrawer extends StatelessWidget {
           //     ),
           //   ],
           // ),
-          ExpansionTile(
-            leading: const Icon(Icons.pin_end),
-            title: Text(
-              'Services',
-              style: GoogleFonts.merriweather(
-                fontSize: width * 0.035,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            children: [
-              Padding(
-                padding: EdgeInsets.only(left: width * 0.1),
-                child: ListTile(
-                  title: Text(
-                    'Ongoing Services',
-                    style: GoogleFonts.merriweather(
-                      fontSize: width * 0.030,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  onTap: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const StudentOngoingServices(),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              // Padding(
-              //   padding: EdgeInsets.only(left: width * 0.1),
-              //   child: ListTile(
-              //     title: const Text('Cencelled Services'),
-              //     onTap: () {
-              //       Navigator.pushReplacement(
-              //         context,
-              //         MaterialPageRoute(
-              //           builder: (context) => const StudentCancelledServices(),
-              //         ),
-              //       );
-              //     },
-              //   ),
-              // ),
-              // Padding(
-              //   padding: EdgeInsets.only(left: width * 0.1),
-              //   child: ListTile(
-              //     title: const Text('Complete Services'),
-              //     onTap: () {
-              //       Navigator.pushReplacement(
-              //         context,
-              //         MaterialPageRoute(
-              //           builder: (context) => const StudentCompleteServices(),
-              //         ),
-              //       );
-              //     },
-              //   ),
-              // ),
-            ],
-          ),
+          // ExpansionTile(
+          //   leading: const Icon(Icons.pin_end),
+          //   title: Text(
+          //     'Services',
+          //     style: GoogleFonts.merriweather(
+          //       fontSize: width * 0.035,
+          //       fontWeight: FontWeight.w500,
+          //     ),
+          //   ),
+          //   children: [
+          //     Padding(
+          //       padding: EdgeInsets.only(left: width * 0.1),
+          //       child: ListTile(
+          //         title: Text(
+          //           'Ongoing Services',
+          //           style: GoogleFonts.merriweather(
+          //             fontSize: width * 0.030,
+          //             fontWeight: FontWeight.w500,
+          //           ),
+          //         ),
+          //         onTap: () {
+          //           Navigator.pushReplacement(
+          //             context,
+          //             MaterialPageRoute(
+          //               builder: (context) => const StudentOngoingServices(),
+          //             ),
+          //           );
+          //         },
+          //       ),
+          //     ),
+          //     // Padding(
+          //     //   padding: EdgeInsets.only(left: width * 0.1),
+          //     //   child: ListTile(
+          //     //     title: const Text('Cencelled Services'),
+          //     //     onTap: () {
+          //     //       Navigator.pushReplacement(
+          //     //         context,
+          //     //         MaterialPageRoute(
+          //     //           builder: (context) => const StudentCancelledServices(),
+          //     //         ),
+          //     //       );
+          //     //     },
+          //     //   ),
+          //     // ),
+          //     // Padding(
+          //     //   padding: EdgeInsets.only(left: width * 0.1),
+          //     //   child: ListTile(
+          //     //     title: const Text('Complete Services'),
+          //     //     onTap: () {
+          //     //       Navigator.pushReplacement(
+          //     //         context,
+          //     //         MaterialPageRoute(
+          //     //           builder: (context) => const StudentCompleteServices(),
+          //     //         ),
+          //     //       );
+          //     //     },
+          //     //   ),
+          //     // ),
+          //   ],
+          // ),
           ListTile(
             leading: const Icon(Icons.wallet),
             title: Text(

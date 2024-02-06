@@ -151,47 +151,47 @@ class _StudentWalletState extends State<StudentWallet> {
                                 const SizedBox(
                                   height: 25,
                                 ),
-                                Container(
-                                  width: width * 0.35,
-                                  height: height * 0.06,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    gradient: const LinearGradient(
-                                      colors: [
-                                        Color.fromARGB(162, 209, 14, 14),
-                                        Color.fromARGB(139, 248, 3, 3),
-                                      ],
-                                      begin: Alignment.centerLeft,
-                                      end: Alignment.centerRight,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        blurRadius: 5,
-                                        spreadRadius: 2,
-                                        offset: const Offset(0, 3),
-                                      ),
-                                    ],
-                                  ),
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                      ),
-                                      backgroundColor: Colors.transparent,
-                                      elevation: 0,
-                                    ),
-                                    child: Text(
-                                      'View Profile',
-                                      style: GoogleFonts.merriweather(
-                                        fontSize: 0.032 * width,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                // Container(
+                                //   width: width * 0.35,
+                                //   height: height * 0.06,
+                                //   decoration: BoxDecoration(
+                                //     borderRadius: BorderRadius.circular(30),
+                                //     gradient: const LinearGradient(
+                                //       colors: [
+                                //         Color.fromARGB(162, 209, 14, 14),
+                                //         Color.fromARGB(139, 248, 3, 3),
+                                //       ],
+                                //       begin: Alignment.centerLeft,
+                                //       end: Alignment.centerRight,
+                                //     ),
+                                //     boxShadow: [
+                                //       BoxShadow(
+                                //         color: Colors.grey.withOpacity(0.5),
+                                //         blurRadius: 5,
+                                //         spreadRadius: 2,
+                                //         offset: const Offset(0, 3),
+                                //       ),
+                                //     ],
+                                //   ),
+                                //   child: ElevatedButton(
+                                //     onPressed: () {},
+                                //     style: ElevatedButton.styleFrom(
+                                //       shape: RoundedRectangleBorder(
+                                //         borderRadius: BorderRadius.circular(30),
+                                //       ),
+                                //       backgroundColor: Colors.transparent,
+                                //       elevation: 0,
+                                //     ),
+                                //     child: Text(
+                                //       'View Profile',
+                                //       style: GoogleFonts.merriweather(
+                                //         fontSize: 0.032 * width,
+                                //         fontWeight: FontWeight.bold,
+                                //         color: Colors.white,
+                                //       ),
+                                //     ),
+                                //   ),
+                                // ),
                               ],
                             );
                           },
@@ -298,7 +298,7 @@ class _StudentWalletState extends State<StudentWallet> {
                               elevation: 0,
                             ),
                             child: Text(
-                              'Deposite',
+                              'Deposit',
                               style: GoogleFonts.merriweather(
                                 fontSize: 0.032 * width,
                                 fontWeight: FontWeight.bold,

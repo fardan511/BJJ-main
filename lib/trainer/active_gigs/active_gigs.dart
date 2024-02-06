@@ -116,13 +116,13 @@ class _ActiveGigsState extends State<ActiveGigs> {
                                 color: const Color.fromARGB(82, 255, 235, 238),
                               ),
                               child: Container(
-                                width: width * 0.8,
+                                width: width * 0.9,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15.0),
                                   color: Colors.white,
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(25.0),
+                                  padding: EdgeInsets.all(width * 0.02),
                                   child: StreamBuilder(
                                     stream: FirebaseFirestore.instance
                                         .collection('users')
@@ -132,109 +132,132 @@ class _ActiveGigsState extends State<ActiveGigs> {
                                       if (!snapshot.hasData) {
                                         return const SizedBox();
                                       }
-                                      return Column(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text(
-                                                '${snapshot.data!["userName"] ?? snapshot.data!["username"]}',
-                                                style: GoogleFonts.merriweather(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.black,
-                                                  fontSize: width * 0.05,
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: width * 0.02,
-                                              ),
-                                              Icon(
-                                                Icons.check_circle_rounded,
-                                                color: Colors.red,
-                                                size: width * 0.04,
-                                              ),
-                                              const Spacer(),
-                                              Icon(
-                                                Icons.favorite_border,
-                                                color: Colors.red,
-                                                size: width * 0.04,
-                                              ),
-                                            ],
-                                          ),
-                                          const SizedBox(
-                                            height: 5,
-                                          ),
-                                          Row(
-                                            children: [
-                                              const Text("Delivery:"),
-                                              const SizedBox(
-                                                width: 10,
-                                              ),
-                                              Text(
-                                                "1-3 Days",
-                                                style: GoogleFonts.merriweather(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              )
-                                            ],
-                                          ),
-                                          const SizedBox(height: 15),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                "Video Feedback",
-                                                style: GoogleFonts.merriweather(
-                                                    fontSize: width * 0.05,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                                textAlign: TextAlign.left,
-                                              ),
-                                              const Spacer(),
-                                            ],
-                                          ),
-                                          const SizedBox(
-                                            height: 25,
-                                          ),
-                                          Row(
+                                      return Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                          // color: const Color.fromARGB(82, 255, 235, 238),
+                                          color:
+                                              Color.fromARGB(59, 253, 200, 208),
+                                        ),
+                                        child: Padding(
+                                          padding: EdgeInsets.all(width * 0.02),
+                                          child: Column(
                                             children: [
                                               Row(
                                                 children: [
-                                                  SvgPicture.asset(
-                                                    'images/tag.svg',
-                                                    width: width * 0.05,
-                                                  ),
-                                                  const SizedBox(width: 8.0),
                                                   Text(
-                                                    "Video Reviews",
+                                                    '${snapshot.data!["userName"] ?? snapshot.data!["username"]}',
                                                     style: GoogleFonts
                                                         .merriweather(
-                                                      fontSize: width * 0.04,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.black,
+                                                      fontSize: width * 0.05,
                                                     ),
                                                   ),
+                                                  SizedBox(
+                                                    width: width * 0.02,
+                                                  ),
+                                                  Icon(
+                                                    Icons.check_circle_rounded,
+                                                    color: Colors.red,
+                                                    size: width * 0.04,
+                                                  ),
+                                                  const Spacer(),
+                                                  Icon(
+                                                    Icons.favorite_border,
+                                                    color: Colors.red,
+                                                    size: width * 0.04,
+                                                  ),
                                                 ],
-                                              )
-                                            ],
-                                          ),
-                                          SizedBox(width: width * 0.1),
-                                          Container(
-                                            width: width * 0.2,
-                                            height: height * 0.04,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(15.0),
-                                              color: const Color.fromARGB(
-                                                  133, 248, 187, 208),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                "\$${gig['packages'].first['price']}.00",
-                                                style: const TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.red,
+                                              ),
+                                              const SizedBox(
+                                                height: 5,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  const Text("Delivery:"),
+                                                  const SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  Text(
+                                                    "1-3 Days",
+                                                    style: GoogleFonts
+                                                        .merriweather(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                  )
+                                                ],
+                                              ),
+                                              const SizedBox(height: 15),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    "Video Feedback",
+                                                    style: GoogleFonts
+                                                        .merriweather(
+                                                            fontSize:
+                                                                width * 0.05,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                    textAlign: TextAlign.left,
+                                                  ),
+                                                  const Spacer(),
+                                                ],
+                                              ),
+                                              const SizedBox(
+                                                height: 25,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      SvgPicture.asset(
+                                                        'images/tag.svg',
+                                                        width: width * 0.05,
+                                                      ),
+                                                      const SizedBox(
+                                                          width: 8.0),
+                                                      Text(
+                                                        "Video Reviews",
+                                                        style: GoogleFonts
+                                                            .merriweather(
+                                                          fontSize:
+                                                              width * 0.04,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                              SizedBox(width: width * 0.1),
+                                              Container(
+                                                width: width * 0.2,
+                                                height: height * 0.04,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15.0),
+                                                  color: const Color.fromARGB(
+                                                      133, 248, 187, 208),
+                                                ),
+                                                child: Center(
+                                                  child: Text(
+                                                    "\$${gig['packages'].first['price']}.00",
+                                                    style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.red,
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
+                                            ],
                                           ),
-                                        ],
+                                        ),
                                       );
                                     },
                                   ),

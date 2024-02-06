@@ -54,17 +54,29 @@ class _MyTableState extends State<MyTable> {
           TableRow(
             children: [
               TableCell(child: Text('')),
-              Padding(
-                padding: EdgeInsets.all(height * 0.01),
-                child: TableCell(child: Center(child: Text('Package 0', style: GoogleFonts.merriweather()))),
+              TableCell(
+                child: Padding(
+                  padding: EdgeInsets.all(height * 0.01),
+                  child: Center(
+                      child:
+                          Text('Package 0', style: GoogleFonts.merriweather())),
+                ),
               ),
-              Padding(
-                padding: EdgeInsets.all(height * 0.01),
-                child: TableCell(child: Center(child: Text('Package 1', style: GoogleFonts.merriweather()))),
+              TableCell(
+                child: Padding(
+                  padding: EdgeInsets.all(height * 0.01),
+                  child: Center(
+                      child:
+                          Text('Package 1', style: GoogleFonts.merriweather())),
+                ),
               ),
-              Padding(
-                padding: EdgeInsets.all(height * 0.01),
-                child: TableCell(child: Center(child: Text('Package 2', style: GoogleFonts.merriweather()))),
+              TableCell(
+                child: Padding(
+                  padding: EdgeInsets.all(height * 0.01),
+                  child: Center(
+                      child:
+                          Text('Package 2', style: GoogleFonts.merriweather())),
+                ),
               ),
             ],
           ),
@@ -76,9 +88,9 @@ class _MyTableState extends State<MyTable> {
                 padding: EdgeInsets.only(top: height * 0.01),
                 child: Text('Name', style: GoogleFonts.merriweather()),
               ))),
-              Padding(
-                padding: EdgeInsets.only(left: width * 0.01),
-                child: TableCell(
+              TableCell(
+                child: Padding(
+                  padding: EdgeInsets.only(left: width * 0.01),
                   child: Padding(
                     padding: EdgeInsets.only(left: width * 0.015),
                     child: TextFormField(
@@ -138,11 +150,13 @@ class _MyTableState extends State<MyTable> {
                 padding: EdgeInsets.only(top: height * 0.01),
                 child: Text('Delivery Time', style: GoogleFonts.merriweather()),
               ))),
-              Padding(
-                padding: EdgeInsets.only(left: width * 0.05),
-                child: TableCell(
+              TableCell(
+                child: Padding(
+                  padding: EdgeInsets.only(left: width * 0.05),
                   child: DropdownButton<String>(
-                    value: widget.deliveryTimes[0].isNotEmpty ? widget.deliveryTimes[0] : null,
+                    value: widget.deliveryTimes[0].isNotEmpty
+                        ? widget.deliveryTimes[0]
+                        : null,
                     items: [
                       '1-2 Weeks',
                       '1-3 Days',
@@ -166,12 +180,15 @@ class _MyTableState extends State<MyTable> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(left: width * 0.05),
-                child: TableCell(
+              TableCell(
+                child: Padding(
+                  padding: EdgeInsets.only(left: width * 0.05),
                   child: DropdownButton<String>(
-                    value: widget.deliveryTimes[1].isNotEmpty ? widget.deliveryTimes[1] : null,
-                    items: ['1-2 Weeks', '1-3 Days', '3-5 Days'].map((String value) {
+                    value: widget.deliveryTimes[1].isNotEmpty
+                        ? widget.deliveryTimes[1]
+                        : null,
+                    items: ['1-2 Weeks', '1-3 Days', '3-5 Days']
+                        .map((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(
@@ -190,12 +207,15 @@ class _MyTableState extends State<MyTable> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(left: width * 0.05),
-                child: TableCell(
+              TableCell(
+                child: Padding(
+                  padding: EdgeInsets.only(left: width * 0.05),
                   child: DropdownButton<String>(
-                    value: widget.deliveryTimes[2].isNotEmpty ? widget.deliveryTimes[2] : null,
-                    items: ['1-2 Weeks', '1-3 Days', '3-5 Days'].map((String value) {
+                    value: widget.deliveryTimes[2].isNotEmpty
+                        ? widget.deliveryTimes[2]
+                        : null,
+                    items: ['1-2 Weeks', '1-3 Days', '3-5 Days']
+                        .map((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(
@@ -219,11 +239,13 @@ class _MyTableState extends State<MyTable> {
           TableRow(
             children: [
               TableCell(
-                  child: Center(
-                      child: Padding(
-                padding: EdgeInsets.only(top: height * 0.01),
-                child: Text('Revision', style: GoogleFonts.merriweather()),
-              ))),
+                child: Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: height * 0.01),
+                    child: Text('Revision', style: GoogleFonts.merriweather()),
+                  ),
+                ),
+              ),
               TableCell(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -358,7 +380,8 @@ class _MyTableState extends State<MyTable> {
                   child: Center(
                       child: Padding(
                 padding: EdgeInsets.only(top: height * 0.01),
-                child: Text('1 Video Review', style: GoogleFonts.merriweather()),
+                child:
+                    Text('1 Video Review', style: GoogleFonts.merriweather()),
               ))),
               TableCell(
                 child: Checkbox(
@@ -398,7 +421,8 @@ class _MyTableState extends State<MyTable> {
                   child: Center(
                       child: Padding(
                 padding: EdgeInsets.only(top: height * 0.01),
-                child: Text('3 Video Review', style: GoogleFonts.merriweather()),
+                child:
+                    Text('3 Video Review', style: GoogleFonts.merriweather()),
               ))),
               TableCell(
                 child: Checkbox(
@@ -438,7 +462,8 @@ class _MyTableState extends State<MyTable> {
                   child: Center(
                       child: Padding(
                 padding: EdgeInsets.only(top: height * 0.01),
-                child: Text('5 Video Review', style: GoogleFonts.merriweather()),
+                child:
+                    Text('5 Video Review', style: GoogleFonts.merriweather()),
               ))),
               TableCell(
                 child: Checkbox(

@@ -83,7 +83,8 @@ class _StudentDashboardState extends State<StudentDashboard> {
                               autoPlay: kDebugMode ? false : true,
                               height: 250,
                               autoPlayCurve: Curves.fastOutSlowIn,
-                              autoPlayAnimationDuration: const Duration(seconds: 2),
+                              autoPlayAnimationDuration:
+                                  const Duration(seconds: 2),
                               autoPlayInterval: const Duration(seconds: 2),
                               enlargeCenterPage: true,
                               aspectRatio: 2.0,
@@ -110,7 +111,9 @@ class _StudentDashboardState extends State<StudentDashboard> {
                     .collection('users')
                     .where('role', isEqualTo: 'teacher')
                     .snapshots()
-                    .map((event) => event.docs.map((e) => TrainerModel.fromJson(e.data())).toList()),
+                    .map((event) => event.docs
+                        .map((e) => TrainerModel.fromJson(e.data()))
+                        .toList()),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) return const SizedBox();
 
@@ -131,21 +134,25 @@ class _StudentDashboardState extends State<StudentDashboard> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => TrainerScreen(trainer: trainer),
+                                builder: (context) =>
+                                    TrainerScreen(trainer: trainer),
                               ),
                             );
                           },
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.transparent),
                             elevation: MaterialStateProperty.all(0),
-                            overlayColor: MaterialStateProperty.all(Colors.transparent),
+                            overlayColor:
+                                MaterialStateProperty.all(Colors.transparent),
                             side: MaterialStateProperty.all(BorderSide.none),
                           ),
                           child: UserCard(
                             name: "${trainer.profileName}",
                             hourlyRate: '\$${trainer.hourlyRate}',
                             starsRating: 4.5,
-                            avatarImagePath: trainer.userImage != null && trainer.userImage!.isNotEmpty
+                            avatarImagePath: trainer.userImage != null &&
+                                    trainer.userImage!.isNotEmpty
                                 ? trainer.userImage!
                                 : AppLiterals.defaultAvatar,
                             country: "${trainer.location}",
@@ -165,7 +172,8 @@ class _StudentDashboardState extends State<StudentDashboard> {
                 child: Column(
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center, // Center vertically
+                      mainAxisAlignment:
+                          MainAxisAlignment.center, // Center vertically
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
@@ -219,7 +227,8 @@ class _StudentDashboardState extends State<StudentDashboard> {
                     SizedBox(width: width * 0.02),
                     InkWell(
                       onTap: () {
-                        _launchInstagramURL('https://www.instagram.com/bjjtrainingpros/');
+                        _launchInstagramURL(
+                            'https://www.instagram.com/bjjtrainingpros/');
                       },
                       child: Container(
                         width: width * 0.15,
@@ -241,7 +250,8 @@ class _StudentDashboardState extends State<StudentDashboard> {
                     SizedBox(width: width * 0.02),
                     InkWell(
                       onTap: () {
-                        _launchYoutubeURL('https://www.youtube.com/@BjjTrainingPros');
+                        _launchYoutubeURL(
+                            'https://www.youtube.com/@BjjTrainingPros');
                       },
                       child: Container(
                         width: width * 0.15,
@@ -456,9 +466,11 @@ class UserCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Card(
       child: Container(
-        width: 350,
+        width: width * 0.95,
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -467,16 +479,16 @@ class UserCard extends StatelessWidget {
               child: avatarImagePath.isURL
                   ? Image.network(
                       avatarImagePath,
-                      width: 60,
-                      height: 60,
+                      width: width * 0.2,
+                      height: height * 0.09,
                       fit: BoxFit.cover,
                       cacheHeight: 60,
                       cacheWidth: 60,
                     )
                   : Image.asset(
                       avatarImagePath,
-                      width: 60,
-                      height: 60,
+                      width: width * 0.2,
+                      height: height * 0.09,
                       fit: BoxFit.cover,
                     ),
             ),
@@ -502,62 +514,74 @@ class UserCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle BJJ Trainer button press
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black, // Button color
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0), // Adjust the value for the desired roundness
+            SizedBox(
+              // width: width * 0.01,
+              child: Column(
+                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                    width: width * 0.45, // Adjusted button width
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        backgroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const Icon(
+                            Icons.person,
+                            color: Colors.white, // Icon color
+                          ),
+                          // SizedBox(width: 5),
+                          Text(
+                            'BJJ Trainer',
+                            style: GoogleFonts.merriweather(
+                              color: Colors.white,
+                              fontSize: width * 0.030,
+                            ), // Text color
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.person,
-                        color: Colors.white, // Icon color
+                  SizedBox(
+                    width: width * 0.45,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Handle USA button press
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(vertical: 8),
+                        backgroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
                       ),
-                      SizedBox(width: 8),
-                      Text(
-                        'BJJ Trainer',
-                        style: GoogleFonts.merriweather(
-                          color: Colors.white,
-                        ), // Text color
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const Icon(
+                            Icons.location_on,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            country,
+                            style: GoogleFonts.merriweather(
+                              color: Colors.white,
+                              fontSize: width * 0.030,
+                            ), // Text color
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle USA button press
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black, // Button color
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
                     ),
                   ),
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.location_on,
-                        color: Colors.white,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        country,
-                        style: GoogleFonts.merriweather(
-                          color: Colors.white,
-                        ), // Text color
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

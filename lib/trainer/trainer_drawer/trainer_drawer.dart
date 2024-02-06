@@ -49,7 +49,10 @@ class AppDrawer extends StatelessWidget {
                 color: Colors.black,
               ),
               child: StreamBuilder(
-                stream: FirebaseFirestore.instance.collection('users').doc(auth.currentUser!.uid).snapshots(),
+                stream: FirebaseFirestore.instance
+                    .collection('users')
+                    .doc(auth.currentUser!.uid)
+                    .snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return const SizedBox();
@@ -64,7 +67,8 @@ class AppDrawer extends StatelessWidget {
                           borderRadius: BorderRadius.circular(
                             10.0,
                           ),
-                          child: snapshot.data!['userImage'] != null && snapshot.data!['userImage'].isNotEmpty
+                          child: snapshot.data!['userImage'] != null &&
+                                  snapshot.data!['userImage'].isNotEmpty
                               ? Image(
                                   image: NetworkImage(
                                     snapshot.data!['userImage'],
@@ -142,7 +146,7 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.person),
             title: Text(
-              'Profile',
+              'Create Profile',
               style: GoogleFonts.merriweather(
                 fontSize: width * 0.035,
                 fontWeight: FontWeight.w500,
@@ -158,7 +162,10 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           FutureBuilder(
-              future: FirebaseFirestore.instance.collection('users').doc(auth.currentUser!.uid).get(),
+              future: FirebaseFirestore.instance
+                  .collection('users')
+                  .doc(auth.currentUser!.uid)
+                  .get(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return const SizedBox();
@@ -177,7 +184,8 @@ class AppDrawer extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => TrainerScreen2(
-                          trainer: TrainerModel.fromJson(snapshot.data!.data()!),
+                          trainer:
+                              TrainerModel.fromJson(snapshot.data!.data()!),
                         ),
                       ),
                     );

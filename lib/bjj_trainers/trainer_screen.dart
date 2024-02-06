@@ -1,6 +1,7 @@
 import 'package:bjj/chat/chatterScreen.dart';
 import 'package:bjj/models/trainer_model.dart';
 import 'package:bjj/student/student_drawer/student_drawer.dart';
+import 'package:bjj/student/trainer_displaying_gig/trainers_displaying_gig.dart';
 import 'package:bjj/trainer/trainer_gig/trainer_gig.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,9 @@ class _TrainerScreenState extends State<TrainerScreen> {
     final videoID = widget.trainer.otherLinkURL?.contains('youtube') ?? false
         ? YoutubePlayer.convertUrlToId(widget.trainer.otherLinkURL!)
         : YoutubePlayer.convertUrlToId(videoURL);
-    _controller = YoutubePlayerController(initialVideoId: videoID!, flags: const YoutubePlayerFlags(autoPlay: false));
+    _controller = YoutubePlayerController(
+        initialVideoId: videoID!,
+        flags: const YoutubePlayerFlags(autoPlay: false));
     super.initState();
   }
 
@@ -90,11 +93,13 @@ class _TrainerScreenState extends State<TrainerScreen> {
                           children: [
                             // First image
                             Positioned(
-                              child: widget.trainer.userImage != null && widget.trainer.userImage!.isNotEmpty
+                              child: widget.trainer.userImage != null &&
+                                      widget.trainer.userImage!.isNotEmpty
                                   ? Image.asset(
                                       'images/white.png',
                                       width: width,
-                                      fit: BoxFit.fitHeight, // or BoxFit.contain, depending on your preference
+                                      fit: BoxFit
+                                          .fitHeight, // or BoxFit.contain, depending on your preference
                                     )
                                   : AspectRatio(
                                       aspectRatio: 9 / 9,
@@ -111,7 +116,8 @@ class _TrainerScreenState extends State<TrainerScreen> {
                                 width: width * 0.55,
                                 height: height * 0.55,
                                 child: Image.network(
-                                  widget.trainer.userImage != null && widget.trainer.userImage!.isNotEmpty
+                                  widget.trainer.userImage != null &&
+                                          widget.trainer.userImage!.isNotEmpty
                                       ? widget.trainer.userImage!
                                       : AppLiterals.defaultAvatar,
                                   fit: BoxFit.contain,
@@ -149,7 +155,9 @@ class _TrainerScreenState extends State<TrainerScreen> {
                       ),
                       Text(
                         "${widget.trainer.level}",
-                        style: GoogleFonts.merriweather(fontSize: 0.035 * width, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.merriweather(
+                            fontSize: 0.035 * width,
+                            fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
                         height: 15,
@@ -165,7 +173,9 @@ class _TrainerScreenState extends State<TrainerScreen> {
                       ),
                       Text(
                         "\$${widget.trainer.hourlyRate}",
-                        style: GoogleFonts.merriweather(fontSize: 0.040 * width, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.merriweather(
+                            fontSize: 0.040 * width,
+                            fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
                         height: 25,
@@ -187,18 +197,13 @@ class _TrainerScreenState extends State<TrainerScreen> {
                         width: width * 0.45,
                         height: height * 0.05,
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 24.0),
-                              child: Text(
-                                '0',
-                                style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.035),
-                              ),
-                            ),
-                            const SizedBox(width: 10),
                             Text(
                               'Current Gigs',
-                              style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.035),
+                              style: GoogleFonts.merriweather(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: width * 0.035),
                             ),
                           ],
                         ),
@@ -211,21 +216,16 @@ class _TrainerScreenState extends State<TrainerScreen> {
                           color: Colors.greenAccent.shade100,
                           borderRadius: BorderRadius.circular(25.0),
                         ),
-                        width: width * 0.45,
+                        width: width * 0.5,
                         height: height * 0.05,
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 24.0),
-                              child: Text(
-                                '0',
-                                style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.035),
-                              ),
-                            ),
-                            const SizedBox(width: 10),
                             Text(
-                              'Current Gigs',
-                              style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.035),
+                              'Ongoing Projects',
+                              style: GoogleFonts.merriweather(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: width * 0.035),
                             ),
                           ],
                         ),
@@ -238,21 +238,16 @@ class _TrainerScreenState extends State<TrainerScreen> {
                           color: const Color.fromARGB(133, 255, 208, 128),
                           borderRadius: BorderRadius.circular(25.0),
                         ),
-                        width: width * 0.45,
+                        width: width * 0.5,
                         height: height * 0.05,
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 24.0),
-                              child: Text(
-                                '0',
-                                style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.035),
-                              ),
-                            ),
-                            const SizedBox(width: 10),
                             Text(
-                              'Current Gigs',
-                              style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.035),
+                              'Ongoing Services',
+                              style: GoogleFonts.merriweather(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: width * 0.035),
                             ),
                           ],
                         ),
@@ -265,47 +260,6 @@ class _TrainerScreenState extends State<TrainerScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              width: width * 0.4,
-                              height: height * 0.06,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30),
-                                gradient: const LinearGradient(
-                                  colors: [
-                                    Color.fromARGB(159, 255, 205, 210),
-                                    Color.fromARGB(159, 255, 205, 210),
-                                  ],
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                ),
-                              ),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (context) => TrainerProjectScreen(trainerId: widget.trainer.id ?? ''),
-                                    ),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  backgroundColor: Colors.transparent,
-                                  elevation: 0,
-                                ),
-                                child: Text(
-                                  'Projects',
-                                  style: GoogleFonts.merriweather(
-                                      fontSize: 0.035 * width,
-                                      color: Color.fromARGB(255, 202, 40, 28),
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                            ),
-                            // SizedBox(
-                            //   width: width * 0.01,
-                            // ),
                             Container(
                               width: width * 0.4,
                               height: height * 0.06,
@@ -341,11 +295,56 @@ class _TrainerScreenState extends State<TrainerScreen> {
                                   'Message',
                                   style: GoogleFonts.merriweather(
                                       fontSize: 0.035 * width,
-                                      color: const Color.fromARGB(255, 202, 40, 28),
+                                      color: const Color.fromARGB(
+                                          255, 202, 40, 28),
                                       fontWeight: FontWeight.w600),
                                 ),
                               ),
                             ),
+                            Container(
+                              width: width * 0.4,
+                              height: height * 0.06,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                gradient: const LinearGradient(
+                                  colors: [
+                                    Color.fromARGB(159, 255, 205, 210),
+                                    Color.fromARGB(159, 255, 205, 210),
+                                  ],
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                ),
+                              ),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          TrainerProjectScreen(
+                                              trainerId:
+                                                  widget.trainer.id ?? ''),
+                                    ),
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  backgroundColor: Colors.transparent,
+                                  elevation: 0,
+                                ),
+                                child: Text(
+                                  'Projects',
+                                  style: GoogleFonts.merriweather(
+                                      fontSize: 0.035 * width,
+                                      color: Color.fromARGB(255, 202, 40, 28),
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ),
+                            // SizedBox(
+                            //   width: width * 0.01,
+                            // ),
                           ],
                         ),
                       ),
@@ -383,7 +382,8 @@ class _TrainerScreenState extends State<TrainerScreen> {
                 width: width * 0.95,
                 // height: height * 0.05,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0), // Set the border radius
+                  borderRadius:
+                      BorderRadius.circular(10.0), // Set the border radius
                   color: const Color.fromARGB(82, 255, 235, 238),
                 ),
                 child: Column(
@@ -529,7 +529,8 @@ class _TrainerScreenState extends State<TrainerScreen> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => TrainerGig(
+                                            builder: (context) =>
+                                                TrainerDisplayingGig(
                                               data: data,
                                               fromTrainer: false,
                                             ),
@@ -539,7 +540,8 @@ class _TrainerScreenState extends State<TrainerScreen> {
                                       child: Container(
                                         width: width * 0.8,
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(15.0),
+                                          borderRadius:
+                                              BorderRadius.circular(15.0),
                                           color: Colors.white,
                                         ),
                                         child: Padding(
@@ -550,8 +552,13 @@ class _TrainerScreenState extends State<TrainerScreen> {
                                                 children: [
                                                   Text(
                                                     "${data['user_name']}",
-                                                    style: GoogleFonts.merriweather(
-                                                        fontSize: width * 0.04, fontWeight: FontWeight.bold),
+                                                    style: GoogleFonts
+                                                        .merriweather(
+                                                            fontSize:
+                                                                width * 0.04,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
                                                   ),
                                                   SizedBox(
                                                     width: width * 0.02,
@@ -559,13 +566,15 @@ class _TrainerScreenState extends State<TrainerScreen> {
                                                   Icon(
                                                     Icons.check_circle_rounded,
                                                     color: Colors.red,
-                                                    size: width * 0.04, // Set the icon size
+                                                    size: width *
+                                                        0.04, // Set the icon size
                                                   ),
                                                   const Spacer(),
                                                   Icon(
                                                     Icons.favorite_border,
                                                     color: Colors.red,
-                                                    size: width * 0.04, // Set the icon size
+                                                    size: width *
+                                                        0.04, // Set the icon size
                                                   ),
                                                 ],
                                               ),
@@ -580,7 +589,11 @@ class _TrainerScreenState extends State<TrainerScreen> {
                                                   ),
                                                   Text(
                                                     "${data['packages'].first['delivery_time']}",
-                                                    style: GoogleFonts.merriweather(fontWeight: FontWeight.bold),
+                                                    style: GoogleFonts
+                                                        .merriweather(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
                                                   )
                                                 ],
                                               ),
@@ -589,8 +602,13 @@ class _TrainerScreenState extends State<TrainerScreen> {
                                                 children: [
                                                   Text(
                                                     data['title'] ?? 'No title',
-                                                    style: GoogleFonts.merriweather(
-                                                        fontSize: width * 0.05, fontWeight: FontWeight.bold),
+                                                    style: GoogleFonts
+                                                        .merriweather(
+                                                            fontSize:
+                                                                width * 0.05,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
                                                     textAlign: TextAlign.left,
                                                   ),
                                                   const Spacer(),
@@ -607,13 +625,17 @@ class _TrainerScreenState extends State<TrainerScreen> {
                                                         children: [
                                                           SvgPicture.asset(
                                                             'images/tag.svg',
-                                                            width: width * 0.05, // Set the width of the SVG
+                                                            width: width *
+                                                                0.05, // Set the width of the SVG
                                                           ),
-                                                          const SizedBox(width: 8.0),
+                                                          const SizedBox(
+                                                              width: 8.0),
                                                           Text(
                                                             "Video Reviews",
-                                                            style: GoogleFonts.merriweather(
-                                                              fontSize: width * 0.04,
+                                                            style: GoogleFonts
+                                                                .merriweather(
+                                                              fontSize:
+                                                                  width * 0.04,
                                                             ),
                                                           ),
                                                         ],
@@ -625,14 +647,23 @@ class _TrainerScreenState extends State<TrainerScreen> {
                                                     width: width * 0.15,
                                                     height: height * 0.03,
                                                     decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius.circular(15.0),
-                                                      color: const Color.fromARGB(133, 248, 187, 208),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15.0),
+                                                      color:
+                                                          const Color.fromARGB(
+                                                              133,
+                                                              248,
+                                                              187,
+                                                              208),
                                                     ),
                                                     child: Center(
                                                       child: Text(
                                                         "\$${data['packages'].first['price']}.00",
-                                                        style: GoogleFonts.merriweather(
-                                                          fontWeight: FontWeight.bold,
+                                                        style: GoogleFonts
+                                                            .merriweather(
+                                                          fontWeight:
+                                                              FontWeight.bold,
                                                           color: Colors.red,
                                                         ),
                                                       ),
@@ -653,7 +684,8 @@ class _TrainerScreenState extends State<TrainerScreen> {
                         padding: EdgeInsets.all(width * 0.05),
                         child: Text(
                           "No Reviews Yet",
-                          style: GoogleFonts.merriweather(), // Apply the desired font
+                          style: GoogleFonts
+                              .merriweather(), // Apply the desired font
                         ),
                       ),
                     const SizedBox(height: 20),
@@ -716,7 +748,9 @@ class _TrainerScreenState extends State<TrainerScreen> {
                               children: [
                                 Text(
                                   "Gender",
-                                  style: GoogleFonts.merriweather(fontSize: width * 0.05, fontWeight: FontWeight.bold),
+                                  style: GoogleFonts.merriweather(
+                                      fontSize: width * 0.05,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 // SizedBox(
                                 //   height: height * 0.01,
@@ -762,7 +796,9 @@ class _TrainerScreenState extends State<TrainerScreen> {
                               children: [
                                 Text(
                                   "Coach Level",
-                                  style: GoogleFonts.merriweather(fontSize: width * 0.05, fontWeight: FontWeight.bold),
+                                  style: GoogleFonts.merriweather(
+                                      fontSize: width * 0.05,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 Text(
                                   "${widget.trainer.level}",
@@ -805,7 +841,9 @@ class _TrainerScreenState extends State<TrainerScreen> {
                               children: [
                                 Text(
                                   "Location",
-                                  style: GoogleFonts.merriweather(fontSize: width * 0.05, fontWeight: FontWeight.bold),
+                                  style: GoogleFonts.merriweather(
+                                      fontSize: width * 0.05,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 Text(
                                   "${widget.trainer.location}",
@@ -837,7 +875,8 @@ class _TrainerScreenState extends State<TrainerScreen> {
                               child: Center(
                                 child: Text(
                                   "A|あ",
-                                  style: GoogleFonts.merriweather(color: Colors.black87, fontSize: 20),
+                                  style: GoogleFonts.merriweather(
+                                      color: Colors.black87, fontSize: 20),
                                 ),
                               ),
                             ),
@@ -847,7 +886,9 @@ class _TrainerScreenState extends State<TrainerScreen> {
                               children: [
                                 Text(
                                   "Language",
-                                  style: GoogleFonts.merriweather(fontSize: width * 0.05, fontWeight: FontWeight.bold),
+                                  style: GoogleFonts.merriweather(
+                                      fontSize: width * 0.05,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 Text(
                                   "English",
@@ -890,7 +931,9 @@ class _TrainerScreenState extends State<TrainerScreen> {
                               children: [
                                 Text(
                                   "English Level",
-                                  style: GoogleFonts.merriweather(fontSize: width * 0.05, fontWeight: FontWeight.bold),
+                                  style: GoogleFonts.merriweather(
+                                      fontSize: width * 0.05,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 Text(
                                   "Professional",

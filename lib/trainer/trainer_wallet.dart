@@ -1,3 +1,5 @@
+import 'package:bjj/bjj_trainers/trainer_screen_2.dart';
+import 'package:bjj/models/trainer_model.dart';
 import 'package:bjj/trainer/text_field.dart';
 import 'package:bjj/trainer/trainer_drawer/trainer_drawer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -175,7 +177,17 @@ class _TrainerWalletState extends State<TrainerWallet> {
                                     ],
                                   ),
                                   child: ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => TrainerScreen2(
+                                            trainer: TrainerModel.fromJson(
+                                                snapshot.data!.data()!),
+                                          ),
+                                        ),
+                                      );
+                                    },
                                     style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
@@ -292,7 +304,7 @@ class _TrainerWalletState extends State<TrainerWallet> {
                               elevation: 0,
                             ),
                             child: Text(
-                              'Deposite',
+                              'Deposit',
                               style: GoogleFonts.merriweather(
                                 fontSize: 0.032 * width,
                                 fontWeight: FontWeight.bold,

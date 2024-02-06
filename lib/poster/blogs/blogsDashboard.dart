@@ -149,7 +149,8 @@ class _BlogsScreenState extends State<BlogsScreen> {
                           height: height * 0.03,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: width * 0.15),
+                          padding: EdgeInsets.fromLTRB(
+                              width * 0.15, 0, width * 0.15, 0),
                           child: Text(
                             'How Cardio is Key to Progress in BJJ',
                             style: GoogleFonts.merriweather(
@@ -315,7 +316,8 @@ class _BlogsScreenState extends State<BlogsScreen> {
                           height: height * 0.03,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: width * 0.15),
+                          padding: EdgeInsets.fromLTRB(
+                              width * 0.15, 0, width * 0.15, 0),
                           child: Text(
                             'Why Flexibility is Underrated in How to Advance in BJJ and Prevent Injuries',
                             style: GoogleFonts.merriweather(
@@ -648,7 +650,8 @@ class _BlogsScreenState extends State<BlogsScreen> {
                           height: height * 0.03,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: width * 0.15),
+                          padding: EdgeInsets.fromLTRB(
+                              width * 0.15, 0, width * 0.15, 0),
                           child: Text(
                             'How Your Diet Can Improve BJJ Performance',
                             style: GoogleFonts.merriweather(

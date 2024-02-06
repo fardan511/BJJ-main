@@ -1,6 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:bjj/bjj_trainers/trainer_screen_2.dart';
 import 'package:bjj/models/student_model.dart';
+import 'package:bjj/models/trainer_model.dart';
 import 'package:bjj/trainer/trainer_drawer/trainer_drawer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -71,7 +73,10 @@ class _TrainerMessageState extends State<TrainerMessage> {
                       child: Padding(
                         padding: const EdgeInsets.all(25.0),
                         child: StreamBuilder(
-                          stream: FirebaseFirestore.instance.collection('users').doc(auth.currentUser!.uid).snapshots(),
+                          stream: FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(auth.currentUser!.uid)
+                              .snapshots(),
                           builder: (context, snapshot) {
                             if (!snapshot.hasData) {
                               return const SizedBox();
@@ -102,7 +107,8 @@ class _TrainerMessageState extends State<TrainerMessage> {
                                   width: height * 0.2,
                                   height: height * 0.2,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.0), // Adjust the value as needed
+                                    borderRadius: BorderRadius.circular(
+                                        10.0), // Adjust the value as needed
                                     border: Border.all(
                                       color: Colors.white,
                                       width: 2.0,
@@ -112,19 +118,22 @@ class _TrainerMessageState extends State<TrainerMessage> {
                                     borderRadius: BorderRadius.circular(
                                       30.0,
                                     ),
-                                    child: snapshot.data!['userImage'] != null && snapshot.data!['userImage'].isNotEmpty
-                                        ? Image(
-                                            image: NetworkImage(
-                                              snapshot.data!['userImage'],
-                                            ),
-                                            fit: BoxFit.cover,
-                                          )
-                                        : const Image(
-                                            image: AssetImage(
-                                              'images/admin.png',
-                                            ),
-                                            height: 100,
-                                          ),
+                                    child:
+                                        snapshot.data!['userImage'] != null &&
+                                                snapshot.data!['userImage']
+                                                    .isNotEmpty
+                                            ? Image(
+                                                image: NetworkImage(
+                                                  snapshot.data!['userImage'],
+                                                ),
+                                                fit: BoxFit.cover,
+                                              )
+                                            : const Image(
+                                                image: AssetImage(
+                                                  'images/admin.png',
+                                                ),
+                                                height: 100,
+                                              ),
                                   ),
                                 ),
                                 const SizedBox(height: 8),
@@ -171,7 +180,17 @@ class _TrainerMessageState extends State<TrainerMessage> {
                                     ],
                                   ),
                                   child: ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => TrainerScreen2(
+                                            trainer: TrainerModel.fromJson(
+                                                snapshot.data!.data()!),
+                                          ),
+                                        ),
+                                      );
+                                    },
                                     style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30),
@@ -208,7 +227,8 @@ class _TrainerMessageState extends State<TrainerMessage> {
                 child: Center(
                   child: Text(
                     'Message',
-                    style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.05),
+                    style: GoogleFonts.merriweather(
+                        fontWeight: FontWeight.bold, fontSize: width * 0.05),
                   ),
                 ),
               ),
@@ -236,7 +256,9 @@ class _TrainerMessageState extends State<TrainerMessage> {
                       child: Center(
                         child: Text(
                           'No Message found!',
-                          style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.03),
+                          style: GoogleFonts.merriweather(
+                              fontWeight: FontWeight.bold,
+                              fontSize: width * 0.03),
                         ),
                       ),
                     );
@@ -251,7 +273,9 @@ class _TrainerMessageState extends State<TrainerMessage> {
                         itemBuilder: (context, index) {
                           final doc = snapshot.data!.docs[index];
 
-                          final otherKey = doc['user_data'].keys.firstWhere((k) => k != auth.currentUser!.uid);
+                          final otherKey = doc['user_data']
+                              .keys
+                              .firstWhere((k) => k != auth.currentUser!.uid);
 
                           return Center(
                             child: Container(
@@ -259,18 +283,24 @@ class _TrainerMessageState extends State<TrainerMessage> {
                               color: Colors.white,
                               child: ListTile(
                                 onTap: () async {
-                                  final doc = await FirebaseFirestore.instance.collection('users').doc(otherKey).get();
+                                  final doc = await FirebaseFirestore.instance
+                                      .collection('users')
+                                      .doc(otherKey)
+                                      .get();
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => ChatterScreen(
-                                        user: StudentModel.fromJson(doc.data()!),
+                                        user:
+                                            StudentModel.fromJson(doc.data()!),
                                       ),
                                     ),
                                   );
                                 },
-                                title: Text(doc['user_data'][otherKey]['name'] ?? ''),
-                                subtitle: Text(doc['messages'].first['content']),
+                                title: Text(
+                                    doc['user_data'][otherKey]['name'] ?? ''),
+                                subtitle:
+                                    Text(doc['messages'].first['content']),
                               ),
                             ),
                           );

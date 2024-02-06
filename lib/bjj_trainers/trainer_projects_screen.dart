@@ -73,7 +73,10 @@ class _TrainerProjectState extends State<TrainerProjectScreen> {
                       child: Padding(
                         padding: const EdgeInsets.all(25.0),
                         child: StreamBuilder(
-                          stream: FirebaseFirestore.instance.collection('users').doc(widget.trainerId).snapshots(),
+                          stream: FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(widget.trainerId)
+                              .snapshots(),
                           builder: (context, snapshot) {
                             if (!snapshot.hasData) {
                               return const SizedBox();
@@ -84,7 +87,8 @@ class _TrainerProjectState extends State<TrainerProjectScreen> {
                                   width: height * 0.2,
                                   height: height * 0.2,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.0), // Adjust the value as needed
+                                    borderRadius: BorderRadius.circular(
+                                        10.0), // Adjust the value as needed
                                     border: Border.all(
                                       color: Colors.white,
                                       width: 2.0,
@@ -94,19 +98,22 @@ class _TrainerProjectState extends State<TrainerProjectScreen> {
                                     borderRadius: BorderRadius.circular(
                                       30.0,
                                     ),
-                                    child: snapshot.data!['userImage'] != null && snapshot.data!['userImage'].isNotEmpty
-                                        ? Image(
-                                            image: NetworkImage(
-                                              snapshot.data!['userImage'],
-                                            ),
-                                            fit: BoxFit.cover,
-                                          )
-                                        : const Image(
-                                            image: AssetImage(
-                                              'images/admin.png',
-                                            ),
-                                            height: 100,
-                                          ),
+                                    child:
+                                        snapshot.data!['userImage'] != null &&
+                                                snapshot.data!['userImage']
+                                                    .isNotEmpty
+                                            ? Image(
+                                                image: NetworkImage(
+                                                  snapshot.data!['userImage'],
+                                                ),
+                                                fit: BoxFit.cover,
+                                              )
+                                            : const Image(
+                                                image: AssetImage(
+                                                  'images/admin.png',
+                                                ),
+                                                height: 100,
+                                              ),
                                   ),
                                 ),
                                 const SizedBox(height: 8),
@@ -130,47 +137,6 @@ class _TrainerProjectState extends State<TrainerProjectScreen> {
                                 const SizedBox(
                                   height: 25,
                                 ),
-                                Container(
-                                  width: width * 0.35,
-                                  height: height * 0.06,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    gradient: const LinearGradient(
-                                      colors: [
-                                        Color.fromARGB(162, 209, 14, 14),
-                                        Color.fromARGB(139, 248, 3, 3),
-                                      ],
-                                      begin: Alignment.centerLeft,
-                                      end: Alignment.centerRight,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        blurRadius: 5,
-                                        spreadRadius: 2,
-                                        offset: const Offset(0, 3),
-                                      ),
-                                    ],
-                                  ),
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                      ),
-                                      backgroundColor: Colors.transparent,
-                                      elevation: 0,
-                                    ),
-                                    child: Text(
-                                      'View Profile',
-                                      style: GoogleFonts.merriweather(
-                                        fontSize: 0.032 * width,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                ),
                               ],
                             );
                           },
@@ -190,7 +156,8 @@ class _TrainerProjectState extends State<TrainerProjectScreen> {
                 child: Center(
                   child: Text(
                     'Project',
-                    style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.05),
+                    style: GoogleFonts.merriweather(
+                        fontWeight: FontWeight.bold, fontSize: width * 0.05),
                   ),
                 ),
               ),
@@ -216,7 +183,9 @@ class _TrainerProjectState extends State<TrainerProjectScreen> {
                       child: Center(
                         child: Text(
                           'No result found!',
-                          style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.03),
+                          style: GoogleFonts.merriweather(
+                              fontWeight: FontWeight.bold,
+                              fontSize: width * 0.03),
                         ),
                       ),
                     );
@@ -232,7 +201,8 @@ class _TrainerProjectState extends State<TrainerProjectScreen> {
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => TrainerProjectDetails(data: snapshot.data!.docs[index]),
+                                builder: (context) => TrainerProjectDetails(
+                                    data: snapshot.data!.docs[index]),
                               ),
                             );
                           },
@@ -249,25 +219,31 @@ class _TrainerProjectState extends State<TrainerProjectScreen> {
                               children: [
                                 Text(
                                   snapshot.data!.docs[index]['projectTitle'],
-                                  style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.04),
+                                  style: GoogleFonts.merriweather(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: width * 0.04),
                                 ),
                                 const SizedBox(height: 8.0),
                                 Text(
                                   snapshot.data!.docs[index]['description'],
-                                  style: GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.03),
+                                  style: GoogleFonts.merriweather(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: width * 0.03),
                                 ),
                                 Row(
                                   children: [
                                     Text(
                                       "Duration: ${snapshot.data!.docs[index]['projectDuration']}",
-                                      style:
-                                          GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.03),
+                                      style: GoogleFonts.merriweather(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: width * 0.03),
                                     ),
                                     const SizedBox(width: 12.0),
                                     Text(
                                       "Price: \$${snapshot.data!.docs[index]['price']}",
-                                      style:
-                                          GoogleFonts.merriweather(fontWeight: FontWeight.bold, fontSize: width * 0.03),
+                                      style: GoogleFonts.merriweather(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: width * 0.03),
                                     ),
                                   ],
                                 ),
