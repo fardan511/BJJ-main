@@ -61,7 +61,7 @@ class ChatterScreenState extends State<ChatterScreen> {
         _loaded = true;
       });
     } else {
-      print(docID);
+      final user = await _firestore.collection('users').doc(_auth.currentUser!.uid).get();
       final doc = await _firestore.collection('messages').add({
         'user_ids': {
           _auth.currentUser!.uid: true,
@@ -69,10 +69,10 @@ class ChatterScreenState extends State<ChatterScreen> {
         },
         'user_data': {
           _auth.currentUser!.uid: {
-            'name': _auth.currentUser!.displayName ?? '',
+            'name': user['userName'] ?? user['username'] ?? user['profileName'] ?? _auth.currentUser!.displayName ?? '',
           },
           widget.user.id: {
-            'name': widget.user.userName ?? '',
+            'name': widget.user.userName ?? widget.user.username ?? widget.user.profileName ?? '',
           }
         },
         'messages': [],
@@ -95,7 +95,7 @@ class ChatterScreenState extends State<ChatterScreen> {
           elevation: 0,
           backgroundColor: Colors.grey.shade900,
           title: Text(
-            widget.user.profileName ?? '',
+            widget.user.userName ?? widget.user.username ?? widget.user.profileName ?? '',
             style: const TextStyle(
               fontFamily: 'Poppins',
               fontSize: 16,
@@ -171,7 +171,7 @@ class ChatterScreenState extends State<ChatterScreen> {
                                     constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width / 1.25),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(8.0),
-                                      color: Colors.white,
+                                      color: Colors.grey.shade200,
                                     ),
                                     child: Text(
                                       messages[index]['content'],
