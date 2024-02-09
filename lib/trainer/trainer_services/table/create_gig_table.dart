@@ -91,25 +91,37 @@ class _MyTableState extends State<MyTable> {
               TableCell(
                 child: Padding(
                   padding: EdgeInsets.only(left: width * 0.01),
-                  child: Padding(
-                    padding: EdgeInsets.only(left: width * 0.015),
-                    child: TextFormField(
-                      style: GoogleFonts.merriweather(),
-                      controller: widget.names[0],
-                    ),
+                  child: TextFormField(
+                    style: GoogleFonts.merriweather(),
+                    controller: widget.names[0],
+                    decoration: InputDecoration(
+                        hintText: 'Enter Package name',
+                        hintStyle: GoogleFonts.merriweather()),
                   ),
                 ),
               ),
               TableCell(
-                child: TextFormField(
-                  style: GoogleFonts.merriweather(),
-                  controller: widget.names[1],
+                child: Padding(
+                  padding: EdgeInsets.only(left: width * 0.01),
+                  child: TextFormField(
+                    style: GoogleFonts.merriweather(),
+                    controller: widget.names[1],
+                    decoration: InputDecoration(
+                        hintText: 'Enter Package name',
+                        hintStyle: GoogleFonts.merriweather()),
+                  ),
                 ),
               ),
               TableCell(
-                child: TextFormField(
-                  style: GoogleFonts.merriweather(),
-                  controller: widget.names[2],
+                child: Padding(
+                  padding: EdgeInsets.only(left: width * 0.01),
+                  child: TextFormField(
+                    style: GoogleFonts.merriweather(),
+                    controller: widget.names[2],
+                    decoration: InputDecoration(
+                        hintText: 'Enter Package name',
+                        hintStyle: GoogleFonts.merriweather()),
+                  ),
                 ),
               ),
             ],
@@ -123,21 +135,39 @@ class _MyTableState extends State<MyTable> {
                 child: Text('Description', style: GoogleFonts.merriweather()),
               ))),
               TableCell(
-                child: TextFormField(
-                  style: GoogleFonts.merriweather(),
-                  controller: widget.descriptions[0],
+                child: Padding(
+                  padding: EdgeInsets.only(left: width * 0.01),
+                  child: TextFormField(
+                    style: GoogleFonts.merriweather(),
+                    controller: widget.descriptions[0],
+                    decoration: InputDecoration(
+                        hintText: 'Enter Description',
+                        hintStyle: GoogleFonts.merriweather()),
+                  ),
                 ),
               ),
               TableCell(
-                child: TextFormField(
-                  style: GoogleFonts.merriweather(),
-                  controller: widget.descriptions[1],
+                child: Padding(
+                  padding: EdgeInsets.only(left: width * 0.01),
+                  child: TextFormField(
+                    style: GoogleFonts.merriweather(),
+                    controller: widget.descriptions[1],
+                    decoration: InputDecoration(
+                        hintText: 'Enter Description',
+                        hintStyle: GoogleFonts.merriweather()),
+                  ),
                 ),
               ),
               TableCell(
-                child: TextFormField(
-                  style: GoogleFonts.merriweather(),
-                  controller: widget.descriptions[2],
+                child: Padding(
+                  padding: EdgeInsets.only(left: width * 0.01),
+                  child: TextFormField(
+                    style: GoogleFonts.merriweather(),
+                    controller: widget.descriptions[2],
+                    decoration: InputDecoration(
+                        hintText: 'Enter Description',
+                        hintStyle: GoogleFonts.merriweather()),
+                  ),
                 ),
               ),
             ],
@@ -157,6 +187,7 @@ class _MyTableState extends State<MyTable> {
                     value: widget.deliveryTimes[0].isNotEmpty
                         ? widget.deliveryTimes[0]
                         : null,
+                    hint: Text('Select', style: GoogleFonts.merriweather()),
                     items: [
                       '1-2 Weeks',
                       '1-3 Days',
@@ -187,6 +218,7 @@ class _MyTableState extends State<MyTable> {
                     value: widget.deliveryTimes[1].isNotEmpty
                         ? widget.deliveryTimes[1]
                         : null,
+                    hint: Text('Select', style: GoogleFonts.merriweather()),
                     items: ['1-2 Weeks', '1-3 Days', '3-5 Days']
                         .map((String value) {
                       return DropdownMenuItem<String>(
@@ -214,6 +246,7 @@ class _MyTableState extends State<MyTable> {
                     value: widget.deliveryTimes[2].isNotEmpty
                         ? widget.deliveryTimes[2]
                         : null,
+                    hint: Text('Select', style: GoogleFonts.merriweather()),
                     items: ['1-2 Weeks', '1-3 Days', '3-5 Days']
                         .map((String value) {
                       return DropdownMenuItem<String>(
@@ -248,15 +281,8 @@ class _MyTableState extends State<MyTable> {
               ),
               TableCell(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '${widget.revisions[0]}',
-                      style: GoogleFonts.merriweather(
-                        fontSize: width * 0.035,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
                     MaterialButton(
                       minWidth: width * 0.01,
                       child: Container(
@@ -270,6 +296,13 @@ class _MyTableState extends State<MyTable> {
                         ),
                       ),
                       onPressed: () => _incrementCounter(0),
+                    ),
+                    Text(
+                      '${widget.revisions[0]}',
+                      style: GoogleFonts.merriweather(
+                        fontSize: width * 0.035,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                     MaterialButton(
                       minWidth: width * 0.01,
@@ -290,15 +323,8 @@ class _MyTableState extends State<MyTable> {
               ),
               TableCell(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '${widget.revisions[1]}',
-                      style: GoogleFonts.merriweather(
-                        fontSize: width * 0.035,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
                     MaterialButton(
                       minWidth: width * 0.01,
                       child: Container(
@@ -312,6 +338,13 @@ class _MyTableState extends State<MyTable> {
                         ),
                       ),
                       onPressed: () => _incrementCounter(1),
+                    ),
+                    Text(
+                      '${widget.revisions[1]}',
+                      style: GoogleFonts.merriweather(
+                        fontSize: width * 0.035,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                     MaterialButton(
                       minWidth: width * 0.01,
@@ -332,15 +365,8 @@ class _MyTableState extends State<MyTable> {
               ),
               TableCell(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '${widget.revisions[2]}',
-                      style: GoogleFonts.merriweather(
-                        fontSize: width * 0.035,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
                     MaterialButton(
                       minWidth: width * 0.01,
                       child: Container(
@@ -354,6 +380,13 @@ class _MyTableState extends State<MyTable> {
                         ),
                       ),
                       onPressed: () => _incrementCounter(2),
+                    ),
+                    Text(
+                      '${widget.revisions[2]}',
+                      style: GoogleFonts.merriweather(
+                        fontSize: width * 0.035,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                     MaterialButton(
                       minWidth: width * 0.01,
@@ -507,15 +540,8 @@ class _MyTableState extends State<MyTable> {
               ))),
               TableCell(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '\$${widget.prices[0]}',
-                      style: GoogleFonts.merriweather(
-                        fontSize: width * 0.035,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
                     MaterialButton(
                       minWidth: width * 0.01,
                       child: Container(
@@ -533,6 +559,13 @@ class _MyTableState extends State<MyTable> {
                           widget.prices[0] += 1;
                         });
                       },
+                    ),
+                    Text(
+                      '\$${widget.prices[0]}',
+                      style: GoogleFonts.merriweather(
+                        fontSize: width * 0.035,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                     MaterialButton(
                       minWidth: width * 0.01,
@@ -557,15 +590,8 @@ class _MyTableState extends State<MyTable> {
               ),
               TableCell(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '\$${widget.prices[1]}',
-                      style: GoogleFonts.merriweather(
-                        fontSize: width * 0.035,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
                     MaterialButton(
                       minWidth: width * 0.01,
                       child: Container(
@@ -583,6 +609,13 @@ class _MyTableState extends State<MyTable> {
                           widget.prices[1] += 1;
                         });
                       },
+                    ),
+                    Text(
+                      '\$${widget.prices[1]}',
+                      style: GoogleFonts.merriweather(
+                        fontSize: width * 0.035,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                     MaterialButton(
                       minWidth: width * 0.01,
@@ -607,15 +640,8 @@ class _MyTableState extends State<MyTable> {
               ),
               TableCell(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '\$${widget.prices[2]}',
-                      style: GoogleFonts.merriweather(
-                        fontSize: width * 0.035,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
                     MaterialButton(
                       minWidth: width * 0.01,
                       child: Container(
@@ -633,6 +659,13 @@ class _MyTableState extends State<MyTable> {
                           widget.prices[2] += 1;
                         });
                       },
+                    ),
+                    Text(
+                      '\$${widget.prices[2]}',
+                      style: GoogleFonts.merriweather(
+                        fontSize: width * 0.035,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                     MaterialButton(
                       minWidth: width * 0.01,

@@ -29,7 +29,7 @@ import 'package:bjj/student/update_profile/update_student_profile.dart';
 import 'package:bjj/trainer/active_gigs/active_gigs.dart';
 import 'package:bjj/trainer/trainer_dashboard.dart';
 import 'package:bjj/trainer/trainer_dispute.dart';
-import 'package:bjj/trainer/trainer_edit_profile.dart';
+import 'package:bjj/trainer/trainer_create_profile.dart';
 import 'package:bjj/trainer/trainer_following.dart';
 import 'package:bjj/trainer/trainer_gig/trainer_gig.dart';
 import 'package:bjj/trainer/trainer_message.dart';

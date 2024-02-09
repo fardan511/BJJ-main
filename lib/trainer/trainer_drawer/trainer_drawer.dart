@@ -9,7 +9,7 @@ import 'package:bjj/trainer/trainer_services/complete_services.dart';
 import 'package:bjj/trainer/trainer_services/create_services.dart';
 import 'package:bjj/trainer/trainer_services/ongoing_services.dart';
 import 'package:bjj/trainer/trainer_dispute.dart';
-import 'package:bjj/trainer/trainer_edit_profile.dart';
+import 'package:bjj/trainer/trainer_create_profile.dart';
 import 'package:bjj/trainer/trainer_following.dart';
 import 'package:bjj/trainer/trainer_homescreen/trainer_homescreen.dart';
 import 'package:bjj/trainer/trainer_message.dart';
