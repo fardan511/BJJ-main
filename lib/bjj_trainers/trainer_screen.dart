@@ -600,16 +600,20 @@ class _TrainerScreenState extends State<TrainerScreen> {
                                               const SizedBox(height: 15),
                                               Row(
                                                 children: [
-                                                  Text(
-                                                    data['title'] ?? 'No title',
-                                                    style: GoogleFonts
-                                                        .merriweather(
-                                                            fontSize:
-                                                                width * 0.05,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                    textAlign: TextAlign.left,
+                                                  Container(
+                                                    width: width * 0.7,
+                                                    child: Text(
+                                                      data['title'] ??
+                                                          'No title',
+                                                      style: GoogleFonts
+                                                          .merriweather(
+                                                              fontSize:
+                                                                  width * 0.05,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                      textAlign: TextAlign.left,
+                                                    ),
                                                   ),
                                                   const Spacer(),
                                                 ],

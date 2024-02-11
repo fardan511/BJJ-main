@@ -481,7 +481,7 @@ class _TrainerScreenState extends State<TrainerScreen2> {
                                               Row(
                                                 children: [
                                                   Container(
-                                                    width: width * 0.70,
+                                                    width: width * 0.7,
                                                     child: Text(
                                                       data['title'],
                                                       style: GoogleFonts
